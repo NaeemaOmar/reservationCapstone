@@ -63,5 +63,15 @@ nav a.router-link-exact-active {
   width: 75%;
   margin-inline: 100px;
 }
+button {
+  background-color: #C36406;
+  color: #343A40 ;
+  border-radius: 20px;
+  border: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+
 
 </style>
