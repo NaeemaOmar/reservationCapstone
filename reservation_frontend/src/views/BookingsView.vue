@@ -22,101 +22,48 @@
                 <h3 class="mainBrwnTxt mt-3">April</h3>
             </div>
             <div class="row">
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">1</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">2</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">3</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">4</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">5</div>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">1</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">2</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">3</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">4</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">5</button>
             </div>
             <div class="row">
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">8</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">9</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">10</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">11</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">12</div>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">8</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">9</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">10</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">11</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">12</button>
             </div>
             <div class="row">
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">15</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">16</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">17</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">18</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">19</div>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">15</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">16</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">17</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">18</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">19</button>
             </div>
             <div class="row">
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">22</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">23</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">24</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">25</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">26</div>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">22</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">23</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">24</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">25</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">26</button>
             </div>
             <div class="row">
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">29</div>
-                <div class="singleSlot lightBg d-flex align-items-center justify-content-center">30</div>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">29</button>
+                <button class="singleSlot lightBg d-flex align-items-center justify-content-center">30</button>
             </div>
         </div>
-        <!-- MODAL STARTS HERE -->
-        <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content veryWhitenedBrownBg">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">You have chosen to come in on: "{{ theDay }}", "{{ theDate }}"</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mainBrownBg_modal">
-            <div class="veryWhitenedBrownBg_modal">
-                <div class="row">
-                    <div class="col-6">
-                        <p class="mt-3">ID number</p>
-                        <input type="text">
-                    </div>
-                    <div class="col-6">
-                        <p class="mt-3">Language</p>
-                        <input type="text">
-                    </div>
-                </div>
-                <p class="mt-3">Choose the time</p>
-                <input type="text">
-                <p class="mt-3">Choose the Service</p>
-                <input type="text">
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- MODAL ENDS HERE -->
     </div>
 </template>
 
+<script>
+
+</script>
 
 <style>
 .mainBrwnTxt{
     color: #C36406;
-}
-
-.mainBrownBg_modal{
-    background: #C36406;
-    height: 300px;
-    width: 460px;
-}
-
-.veryWhitenedBrownBg_modal{
-    background-color: #F0D8C1;
-    height: 292px;
-    width: 452px;
-    margin-left: 4px;
-    margin-top: 10px;
 }
 
 .veryWhitenedBrownBg{
