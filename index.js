@@ -3,6 +3,7 @@ import {config} from 'dotenv'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import slotRoutes from './routes/slotRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 
 config();
@@ -25,6 +26,7 @@ app.use(cookieParser())
 app.use(express.static('views'))
 
 app.use('/slots', slotRoutes)
+app.use('/users', userRoutes)
 
 const PORT = process.env.MYSQL_ADDON_PORT;
 
