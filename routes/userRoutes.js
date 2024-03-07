@@ -14,5 +14,8 @@ router
         .patch(userController.editAUser)
         .delete(userController.deleteAUser)
 
+router 
+    .route('/login')
+        .post(userController.checkAUser)
 
 export default router

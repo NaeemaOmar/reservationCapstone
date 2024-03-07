@@ -191,6 +191,7 @@ let checkUser = async(id, txtPassword)=>{
     }
 }
 // Checking correct password
+// {"id", "txtPassword"}
 // console.log(await checkUser(79352,"HiThere"))
 // checking incorrect id
 // console.log(await checkUser(47))
