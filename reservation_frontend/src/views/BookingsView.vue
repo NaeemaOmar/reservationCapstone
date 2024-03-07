@@ -12,12 +12,12 @@
         <h3 class="mainBrwnTxt mt-3">Search</h3>
         <div>
             <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button type="submit">Search</button>
+        <input class="form-control searchInput me-2" type="search" placeholder="Search..." aria-label="Search">
+        <button type="submit" class="txtStart">Search</button>
       </form>
         </div>
         <h3 class="mainBrwnTxt mt-3">Slots</h3>
-        <div class="veryWhitenedBrownBg slotsDiv">
+        <div class="veryWhitenedBrownBg slotsDiv mx-auto">
             <div>
                 <h3 class="mainBrwnTxt mt-3">April</h3>
             </div>
@@ -62,32 +62,26 @@
 </script>
 
 <style>
-.mainBrwnTxt{
-    color: #C36406;
-}
 
-.veryWhitenedBrownBg{
-    background-color: #F0D8C1;
-    border: dotted;
-    height: fit-content;
-    width: auto;
-}
-
-input{
+.searchInput{
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     max-width: fit-content;
+    border: none;
+    border-radius: 5px;
+    background-color: #EBCBAC;
 }
 
 .slotsDiv{
     height: 450px;
     width: 550px;
-    margin-left: 4%;
+    /* margin-left: 4%; */
 }
 
 .singleSlot{
     height: 50px;
     width: 50px;
     border-radius: 15px;
+    border-color: #F0D8C1;
     margin-left: 53px;
     margin-top: 20px;
 }

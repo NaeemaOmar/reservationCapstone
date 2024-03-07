@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="bgGradient">
-      <Navbar/>
-      <div class="viewDiv">
+        <Navbar/>
+      <div class="viewDiv mx-auto">
         <router-view/>
       </div>
     </div>
@@ -33,7 +33,7 @@ export default {
 nav {
   height: 80px;
   width: 75%;
-  margin-inline: 100px;
+  /* margin-inline: 100px; */
 }
 
 nav a {
@@ -61,17 +61,48 @@ nav a.router-link-exact-active {
 .viewDiv{
   background-color: #F2EBD9;
   width: 75%;
-  margin-inline: 100px;
+  /* margin-inline: 100px; */
 }
+
+.mainWhitishBg{
+  background-color: #f2ebd9;
+}
+
+input{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    max-width: fit-content;
+    border: none;
+    border-radius: 5px;
+    background-color: #EBCBAC;
+}
+
 button {
   background-color: #C36406;
   color: #343A40 ;
   border-radius: 20px;
+  border-color: #C36406;
   border: solid;
   border-width: 2px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
+.mainBrwnTxt{
+    color: #C36406;
+}
 
+.mainBrwnBg{
+    background-color: #C36406;
+}
+
+.veryWhitenedBrownBg{
+    background-color: #F0D8C1;
+    border: dotted;
+    height: fit-content;
+    width: auto;
+}
+
+.slightlyWhitenedBrownBg{
+  background-color: #EBCBAC;
+}
 
 </style>

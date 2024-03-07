@@ -20,6 +20,13 @@ const routes = [
     component: function () {
       return import('../views/BookingsView.vue')
     }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: function () {
+      return import('../views/LoginView.vue')
+    }
   }
 ]
 
