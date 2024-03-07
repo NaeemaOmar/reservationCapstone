@@ -7,5 +7,88 @@
 </head>
 <body>
     <h1>This is the static page</h1>
+    <h2>Users table</h2>
+    <table>
+        <tr>
+            <th>http method</th>
+            <th>path</th>
+            <th>what it does</th>
+        </tr>
+        <tr>
+            <td>get</td>
+            <td>/users</td>
+            <td>returns users table as an array of objects</td>
+        </tr>
+        <tr>
+            <td>post</td>
+            <td>/users</td>
+            <td>adds a new user to the users table</td>
+        </tr>
+        <tr>
+            <td>get</td>
+            <td>/users/:id</td>
+            <td>returns a single user from the table as an object in an array</td>
+        </tr>
+        <tr>
+            <td>patch</td>
+            <td>/users/:id</td>
+            <td>edits a single user</td>
+        </tr>
+        <tr>
+            <td>delete</td>
+            <td>/users/:id</td>
+            <td>deletes a single user</td>
+        </tr>
+        <tr>
+            <td>post</td>
+            <td>/users/login</td>
+            <td>allows a user to login after checking if username and passwords match</td>
+        </tr>
+    </table>
+    <h2>Slots table</h2>
+    <table>
+        <tr>
+            <th>http method</th>
+            <th>path</th>
+            <th>what it does</th>
+        </tr>
+        <tr>
+            <td>get</td>
+            <td>/slots</td>
+            <td>returns slots table as an array of objects</td>
+        </tr>
+        <tr>
+            <td>post</td>
+            <td>/slots</td>
+            <td>adds a new slot to the slots table</td>
+        </tr>
+        <tr>
+            <td>get</td>
+            <td>/slots/:id</td>
+            <td>returns a single slot from the table as an object in an array</td>
+        </tr>
+        <tr>
+            <td>patch</td>
+            <td>/slots/:id</td>
+            <td>edits a single slot</td>
+        </tr>
+        <tr>
+            <td>delete</td>
+            <td>/slots/:id</td>
+            <td>deletes a single slot</td>
+        </tr>
+    </table>
 </body>
 </html>
+
+<style>
+
+th {
+    background-color: bisque;
+}
+
+td {
+    background-color: whitesmoke;
+}
+
+</style>

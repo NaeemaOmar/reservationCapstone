@@ -12,8 +12,8 @@ export default {
     },
     addASlot: async (req, res)=>{
         console.log('The addSlot fx is working now')
-        let {slotName} = req.body
-        await addASlot(slotName)
+        let {slotID, slotDay, slotDate} = req.body
+        await addASlot(slotID, slotDay, slotDate)
         res.send(await getSlots())
     },
     editASlot: async (req, res) => {
