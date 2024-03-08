@@ -14,9 +14,8 @@ const app = express()
 app.use(cors())
 
 const corsOptions = {
-    // origin: "https://technoflexzone-9e840.web.app",
     // Put in the firebase address here so Godwin can access it
-    origin: "https://reservationcapstone.onrender.com/",
+    origin: "http://localhost:8080/",
     optionsSuccessStatus:200
 }
 
