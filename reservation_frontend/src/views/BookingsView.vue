@@ -73,6 +73,23 @@
         </div>
       </div>
     </div>
+    <h2>Getting slots array from backend</h2>
+    <table>
+      <tr>
+        <th>slot ID</th>
+        <th>slot Day</th>
+        <th>slot Date</th>
+        <th>timeNumber</th>
+      </tr>
+      <div v-for="slot in this.$store.state.allProductsArray" :key="slot.slotID">
+        <tr>
+          <td>{{slot.slotID}}</td>
+          <td>{{slot.slotDay}}</td>
+          <td>{{slot.slotDate}}</td>
+          <td>{{slot.timeNumber}}</td>
+        </tr>
+      </div>
+    </table>
   </div>
 </template>
 
@@ -93,6 +110,13 @@ export default {
   components: {
     BookingsModal,
   },
+  mounted(){
+    try{
+      this.$store.dispatch('getSlots')
+    } catch (error){
+      console.log(`The following error was found while trying to fetch the slots array in the bookings view: ${error}`)
+    }
+  }
 };
 </script>
 
@@ -125,4 +149,11 @@ export default {
 .lightBg {
   background-color: #f2ebd9;
 }
+
+th {
+  background-color: bisque;
+  border-color: aquamarine;
+  border-width: 5px;
+}
+
 </style>
