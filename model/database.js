@@ -23,7 +23,7 @@ let getASlot = async (id)=>{
     `, [id])
     return slot
 }
-console.log(await getASlot(8));
+// console.log(await getASlot(8));
 
 let addASlot = async (slotID, slotDay, slotDate) =>{
     let insertSlot = await pool.query(`
@@ -207,4 +207,83 @@ let checkUser = async(id, txtPassword)=>{
 // checking correct id but incorrect password
 // console.log(await checkUser(79352,"Hi")) 
 
-export {getSlots, getASlot, addASlot, editSlot, deleteSlot, getUsers, getAUser, addAUser, editUser, deleteUser, checkUser}
+// timeSlots crud starts here
+let getTimes = async ()=>{
+    let [timesArray] = await pool.query(`
+    SELECT * FROM times
+    `)
+    // console.log(timesArray)
+    return timesArray
+}
+// console.log(await getTimes());
+
+let getAtime = async (id)=>{
+    let [time] = await pool.query(`
+    SELECT * from times WHERE timeID = ?
+    `, [id])
+    return time
+}
+// console.log(await getAtime(2));
+
+let addAtime = async (timeID, time, timeLength) =>{
+    let insertTime = await pool.query(`
+    INSERT INTO times (timeID, time, timeLength) VALUES (?, ?, ?)
+    `, [timeID, time, timeLength]) 
+    let [newtime] = await pool.query(`
+    SELECT * FROM times WHERE timeID = ?
+    `, [timeID])
+    return newtime
+}
+// console.log(await addAtime("4978", "4th test: addtime/hashPassword", "tester", "Password3"))
+
+// NOTE: 
+//      1) This fx needs the time name to be unique else it will return
+//         >1 item
+//      2) All the fields in the "add time" modal need a "required" attribute since the columns in the database all have a "NOT NULL" constraint
+
+// PROBLEM: This fx is not dynamic and requires ALL values to be present. This is necessary since the website will look untidy/uneven if there are some elements missing.
+
+
+let editTime = async (timeID, time, timeLength) => {
+    if(time){
+        let edittime = await pool.query(`
+        UPDATE times SET time = ? WHERE timeID = ?
+        `, [time, timeID])
+    } else {
+        console.log("There is no time to update")
+    }
+    if(timeLength){
+        let editTimeLength = await pool.query(`
+        UPDATE times SET timeLength = ? WHERE timeID = ?
+        `, [timeLength, timeID])
+    } else {
+        console.log("There is no timeLength to update")
+    }
+    // The code below is the ternary operator version of the conditional satatment above.
+    // let editQuantity = quantity ? await pool.query(`UPDATE times SET quantity = ? WHERE timeID = ?`, [quantity, id]) : console.log("There is no quantity to be updated")
+
+    let showtime = await getAtime(timeID)
+    return showtime
+}
+
+// Test 1: does the 'true' condition work
+// await edittime(10, "Testing edittime() fx", 12, 15.32, "test edittime() fx", "Let's say this is a url when it's actually a prodDesc", "This actually is a url")
+
+// Test 2: does the 'false' condition work
+// await edittime(10, null, null, null, null, null)
+
+// NOTE TO SELF: The conditional statements of the edittime() fx work when true and when values are empty/null. The ternary operator work at true and false as well
+
+// NOTE: This function needs a required at the id since it won't work w/out the time id.
+
+
+let deleteTime = async (id) => {
+    let deletedtime = await getAtime(id)
+    let deleteThetime = await pool.query(`
+    DELETE FROM times WHERE timeID = ?
+    `, [id])
+    return deletedtime
+}
+// console.log(await deletetime(13))
+
+export {getSlots, getASlot, addASlot, editSlot, deleteSlot, getUsers, getAUser, addAUser, editUser, deleteUser, checkUser, getTimes, getAtime, addAtime, editTime, deleteTime}
