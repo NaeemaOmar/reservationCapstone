@@ -16,6 +16,7 @@ app.use(cors())
 const corsOptions = {
     // Put in the firebase address here so Godwin can access it
     origin: "http://localhost:8080",
+    // Please work, amen
     optionsSuccessStatus:200
 }
 
