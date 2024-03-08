@@ -27,9 +27,10 @@ export default createStore({
     // Attempting above code w/ a fetch
     async getSlots({commit}){
       try{
-        let allTheProducts = await fetch(`${baseUrl}/slots`);
-        console.log(allTheProducts)
-        commit('getAllProducts', allTheProducts)
+        console.log("the getSLots axios is working")
+        let allTheProducts = await axios.get(`${baseUrl}/slots`);
+        console.log(allTheProducts.data)
+        commit('getAllProducts', allTheProducts.data)
       } catch(error){
         console.log(`the following error was found while trying to fetch the slots in the store: ${error}`)
       }

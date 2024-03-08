@@ -8,7 +8,7 @@
       <div class="col-4 veryWhitenedBrownBg">Apply for VISA</div>
       <div class="col-4 veryWhitenedBrownBg">Birth Certificate</div>
     </div>
-    <br>
+    <br />
     <h3 class="mainBrwnTxt mt-3">Search</h3>
     <div>
       <form class="d-flex">
@@ -21,7 +21,7 @@
         <button type="submit" class="txtStart">Search</button>
       </form>
     </div>
-    <br>
+    <br />
     <h3 class="mainBrwnTxt mt-3">v-for version of Slots</h3>
     <div class="veryWhitenedBrownBg slotsDiv mx-auto">
       <div>
@@ -33,7 +33,7 @@
           v-for="(dayNumber2, index) in dayNumbersRow1"
           :key="index"
         >
-            <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]"/>
+          <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
         </div>
       </div>
       <div class="row">
@@ -42,7 +42,7 @@
           v-for="(dayNumber2, index) in dayNumbersRow2"
           :key="index"
         >
-            <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
+          <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
         </div>
       </div>
       <div class="row">
@@ -51,7 +51,7 @@
           v-for="(dayNumber2, index) in dayNumbersRow3"
           :key="index"
         >
-            <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
+          <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
         </div>
       </div>
       <div class="row">
@@ -60,7 +60,7 @@
           v-for="(dayNumber2, index) in dayNumbersRow4"
           :key="index"
         >
-            <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
+          <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
         </div>
       </div>
       <div class="row">
@@ -69,26 +69,30 @@
           v-for="(dayNumber2, index) in dayNumbersRow5"
           :key="index"
         >
-            <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
+          <BookingsModal :dayNumber="dayNumber2" :dayName="dayNames[index]" />
         </div>
       </div>
     </div>
     <h2>Getting slots array from backend</h2>
     <table>
-      <tr>
-        <th>slot ID</th>
-        <th>slot Day</th>
-        <th>slot Date</th>
-        <th>timeNumber</th>
-      </tr>
-      <div v-for="slot in this.$store.state.allProductsArray" :key="slot.slotID">
+      <thead>
+        <!-- NOTE: using thead and tbody allows the rows to have the same widths even after the v-for -->
         <tr>
-          <td>{{slot.slotID}}</td>
-          <td>{{slot.slotDay}}</td>
-          <td>{{slot.slotDate}}</td>
-          <td>{{slot.timeNumber}}</td>
+          <th>slot ID</th>
+          <th>slot Day</th>
+          <th>slot Date</th>
         </tr>
-      </div>
+      </thead>
+      <tbody>
+        <tr
+          v-for="slot in this.$store.state.allProductsArray"
+          :key="slot.slotID"
+        >
+          <td>{{ slot.slotID }}</td>
+          <td>{{ slot.slotDay }}</td>
+          <td>{{ slot.slotDate }}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -104,19 +108,21 @@ export default {
       dayNumbersRow3: [15, 16, 17, 18, 19],
       dayNumbersRow4: [22, 23, 24, 25, 26],
       dayNumbersRow5: [29, 30],
-      dayNames:['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+      dayNames: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     };
   },
   components: {
     BookingsModal,
   },
-  mounted(){
-    try{
-      this.$store.dispatch('getSlots')
-    } catch (error){
-      console.log(`The following error was found while trying to fetch the slots array in the bookings view: ${error}`)
+  mounted() {
+    try {
+      this.$store.dispatch("getSlots");
+    } catch (error) {
+      console.log(
+        `The following error was found while trying to fetch the slots array in the bookings view: ${error}`
+      );
     }
-  }
+  },
 };
 </script>
 
@@ -156,4 +162,7 @@ th {
   border-width: 5px;
 }
 
+.slotWidth{
+  width: 500px;
+}
 </style>
