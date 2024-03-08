@@ -286,4 +286,25 @@ let deleteTime = async (id) => {
 }
 // console.log(await deletetime(13))
 
-export {getSlots, getASlot, addASlot, editSlot, deleteSlot, getUsers, getAUser, addAUser, editUser, deleteUser, checkUser, getTimes, getAtime, addAtime, editTime, deleteTime}
+let getbookings = async ()=>{
+    let [bookingsArray] = await pool.query(`
+    SELECT * FROM bookings
+    `)
+    // console.log(bookingsArray)
+    return bookingsArray
+}
+// console.log(await getbookings());
+
+let addABooking = async (userID, userLanguage, userTime, userService) =>{
+    let insertBooking = await pool.query(`
+    INSERT INTO bookings (userID, userLanguage, userTime, userService) VALUES (?, ?, ?, ?)
+    `, [userID, userLanguage, userTime, userService]) 
+    let [newBooking] = await pool.query(`
+    SELECT * FROM bookings WHERE userID = ?
+    `, [userID])
+    return newBooking
+}
+// console.log(await addABooking(4, "hella Gibberish", "1am", "layl salaah"))
+
+
+export {getSlots, getASlot, addASlot, editSlot, deleteSlot, getUsers, getAUser, addAUser, editUser, deleteUser, checkUser, getTimes, getAtime, addAtime, editTime, deleteTime, getbookings}

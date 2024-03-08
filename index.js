@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import slotRoutes from './routes/slotRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import timeRoutes from './routes/timeRoutes.js'
+// import bookingsRoutes from './routes/bookingsRoutes.js'
 
 
 config();
@@ -30,6 +31,7 @@ app.use(express.static('views'))
 app.use('/slots', slotRoutes)
 app.use('/users', userRoutes)
 app.use('/times', timeRoutes)
+// app.use('/bookings', bookingsRoutes)
 
 
 const PORT = process.env.MYSQL_ADDON_PORT;
