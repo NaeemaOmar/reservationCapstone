@@ -7,6 +7,12 @@ router
     .route('/')
         .get(bookingsController.getAllBookings)
         .post(bookingsController.addABooking)
+        
+router 
+    .route('/:id')
+        .get(bookingsController.getABooking)
+        .patch(bookingsController.editABooking)
+        .delete(bookingsController.deleteABooking)
 
 
 export default router

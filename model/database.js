@@ -1,6 +1,7 @@
 import configPg from '../config/config.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import user from '../controller/user.js'
 
 
 const pool = configPg.pool
@@ -295,6 +296,18 @@ let getbookings = async ()=>{
 }
 // console.log(await getbookings());
 
+let getSingleBooking = async (userID)=>{
+    console.log("the getSingleBooking fx (database) is running now")
+    console.log(`The getSingleBooking fx is using the id of: ${userID}`)
+    console.log(userID)
+    let [singleBooking] = await pool.query(`
+    SELECT * FROM bookings where userID = ?
+    `, [userID])
+    // console.log(bookingsArray)
+    return singleBooking
+}
+// console.log(await getSingleBooking(5));
+
 let addABooking = async (userID, userLanguage, userTime, userService) =>{
     let insertBooking = await pool.query(`
     INSERT INTO bookings (userID, userLanguage, userTime, userService) VALUES (?, ?, ?, ?)
@@ -307,15 +320,42 @@ let addABooking = async (userID, userLanguage, userTime, userService) =>{
 // console.log(await addABooking(4, "hella Gibberish", "1am", "layl salaah"))
 
 let editABooking = async (userID, userLanguage, userTime, userService) =>{
-    let editBooking = await pool.query(`
-    UPDATE bookings (userLanguage, userTime, userService) VALUES (?, ?, ?) WHERE userID = ?
-    `, [userLanguage, userTime, userService, userID]) 
+    if (userLanguage){
+        let editBooking = await pool.query(`
+        UPDATE bookings SET userLanguage = ? WHERE userID = ?
+        `, [userLanguage, userID]) 
+    } else {
+        console.log("there is no userLanguage to update")
+    }
+    if (userTime){
+        let editBooking = await pool.query(`
+        UPDATE bookings SET userTime = ? WHERE userID = ?
+        `, [userTime, userID])     
+    } else {
+        console.log("there is no userTime to update")
+    }
+    if (userService){
+        let editBooking = await pool.query(`
+        UPDATE bookings SET userService = ? WHERE userID = ?
+        `, [userService, userID]) 
+    } else {
+        console.log("there is no userService to update")
+    }
     let [newBooking] = await pool.query(`
     SELECT * FROM bookings WHERE userID = ?
     `, [userID])
     return newBooking
 }
 // console.log(await editABooking(1234, "newLuqad", "1am", "layl salaah"))
+// console.log(await editABooking(1234, null, "", ""))
 
+let deleteABooking = async (userID, userLanguage, userTime, userService) =>{
+    let deleteBooking = await pool.query(`
+    DELETE FROM bookings WHERE userID = ?
+    `, [userID]) 
+    let bookingsArray = await getbookings()
+    return bookingsArray
+}
+// console.log(await deleteABooking(4))
 
-export {getSlots, getASlot, addASlot, editSlot, deleteSlot, getUsers, getAUser, addAUser, editUser, deleteUser, checkUser, getTimes, getAtime, addAtime, editTime, deleteTime, getbookings, addABooking}
+export {getSlots, getASlot, addASlot, editSlot, deleteSlot, getUsers, getAUser, addAUser, editUser, deleteUser, checkUser, getTimes, getAtime, addAtime, editTime, deleteTime, getbookings, addABooking, editABooking, deleteABooking, getSingleBooking}
