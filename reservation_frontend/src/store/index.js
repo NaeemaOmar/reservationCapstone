@@ -23,6 +23,7 @@ export default createStore({
     }
   },
   actions: {
+    // USERS ACTIONS START HERE
     // BOOKINGS ACTIONS START HERE
     async getBookings({commit}){
       try{
