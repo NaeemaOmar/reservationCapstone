@@ -10,6 +10,9 @@ export default createStore({
     theBookingsArray: null
   },
   getters: {
+    getBookingsArray: (state)=>{
+      return state.theBookingsArray
+    }
   },
   mutations: {
     getAllProducts(state, value){
@@ -20,6 +23,7 @@ export default createStore({
     }
   },
   actions: {
+    // BOOKINGS ACTIONS START HERE
     async getBookings({commit}){
       try{
         let theBookings = await axios.get(`${baseUrl}/bookings`);
@@ -33,15 +37,21 @@ export default createStore({
         console.log("the bookings.post axios is working")
       } catch (error){console.log(`The following error was found when trying to add the new booking in the store: ${error}`)}
     },
-    // async getSlots ({commit}) {
-    //   try{
-    //     let allTheProducts = await axios.get(`${baseUrl}/slots`);
-    //     console.log(allTheProducts)
-    //     commit('getAllProducts', allTheProducts)
-    //   } catch(error){console.log(`the following error was found while trying to fetch the slots in the store: ${error}`)}
-    // }
-
-    // Attempting above code w/ a fetch
+    async deleteBooking(context, userID){
+      try {
+        await axios.delete(`${baseUrl}/bookings/${userID}`)
+        console.log("the bookings.delete axios is working")
+      } catch (error){console.log(`The following error was found when trying to delete a booking in the store: ${error}`)}
+    },
+    async editABooking(context, editBooking){
+      try {
+        console.log(`In the axios.patch, this is the userID: ${editBooking.userID}`)
+        await axios.patch(`${baseUrl}/bookings/${editBooking.userID}`, editBooking)
+        console.log("the bookings.patch axios is working")
+      } catch (error){console.log(`The following error was found when trying to edit a booking in the store: ${error}`)}
+    },
+    
+    // SLOTS ACTIONS START HERE
     async getSlots({commit}){
       try{
         console.log("the getSLots axios is working")

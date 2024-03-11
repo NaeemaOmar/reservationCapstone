@@ -86,14 +86,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="booking in this.$store.state.theBookingsArray" :key="booking.userID">
+        <tr v-for="booking in this.$store.getters.getBookingsArray" :key="booking.userID">
           <td>{{ booking.userID }}</td>
           <td>{{ booking.userLanguage }}</td>
           <td>{{ booking.userTime }}</td>
           <td>{{ booking.userService }}</td>
           <td class="d-flex justify-content-evenly">
-            <button>edit</button>
-            <button>delete</button>
+            <EditBookingsModal :booking="booking"/>
+            <button @click="deleteBooking(booking.userID)">delete</button>
           </td>
         </tr>
       </tbody>
@@ -127,6 +127,7 @@
 
 <script>
 import BookingsModal from "@/components/BookingsModal.vue";
+import EditBookingsModal from '@/components/EditBookingsModal.vue'
 
 export default {
   data() {
@@ -137,10 +138,12 @@ export default {
       dayNumbersRow4: [22, 23, 24, 25, 26],
       dayNumbersRow5: [29, 30],
       dayNames: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      // bookingsArray: this.$store.getters.getBookingsArray
     };
   },
   components: {
     BookingsModal,
+    EditBookingsModal
   },
   mounted() {
     try {
@@ -157,6 +160,15 @@ export default {
       console.log(`The following error was found while trying to dispatch the getBookings action`)
     }
   },
+  methods :{
+    async deleteBooking (userID) {
+      try {
+        this.$store.dispatch('deleteBooking', userID);
+        location.reload();
+        location.reload();
+      } catch (error){console.log(`The following error occured while trying to dispatch the delete booking fx: ${error}`)}
+    }
+  }
 };
 </script>
 
