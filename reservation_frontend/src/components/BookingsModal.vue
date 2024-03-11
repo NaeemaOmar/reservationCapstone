@@ -63,13 +63,15 @@ export default {
       }
     }},
   methods:{
-    addABooking(){
+    async addABooking(){
+      let newBooking = this.newBooking
+      // the line of code above allows b=me to use the newBooking variable w/out the need for the this. keyword
       try {
-        this.$store.dispatch('addBooking', this.newBooking);
+        await this.$store.dispatch('addBooking', newBooking);
         console.log(`You have successfully created the following booking: userID = ${newBooking.userID}, userLanguage = ${newBooking.userLanguage}, userTime = ${newBooking.userTime}, userService: ${newBooking.userService}`)
         location.reload();
       } catch (error){console.log(`the following error was found in the bookings modal when trying to add a new booking: ${error}`);
-      location.reload();
+      // location.reload();
     }
     }
   }
