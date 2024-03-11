@@ -73,6 +73,32 @@
         </div>
       </div>
     </div>
+    <br><br>
+    <h3 class="mainBrwnTxt">Please confirm or edit/delete your eBooking below:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>userID</th>
+          <th>userLanguage</th>
+          <th>userTime</th>
+          <th>userService</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="booking in this.$store.state.theBookingsArray" :key="booking.userID">
+          <td>{{ booking.userID }}</td>
+          <td>{{ booking.userLanguage }}</td>
+          <td>{{ booking.userTime }}</td>
+          <td>{{ booking.userService }}</td>
+          <td class="d-flex justify-content-evenly">
+            <button>edit</button>
+            <button>delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br><br><br><br><br>
     <h2>Getting slots array from backend</h2>
     <table>
       <thead>
@@ -94,6 +120,8 @@
         </tr>
       </tbody>
     </table>
+
+
   </div>
 </template>
 
@@ -121,6 +149,12 @@ export default {
       console.log(
         `The following error was found while trying to fetch the slots array in the bookings view: ${error}`
       );
+    }
+    try {
+      this.$store.dispatch("getBookings")
+    } catch (error)
+    {
+      console.log(`The following error was found while trying to dispatch the getBookings action`)
     }
   },
 };

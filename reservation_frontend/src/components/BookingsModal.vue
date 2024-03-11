@@ -21,23 +21,23 @@
                 <div class="row">
                     <div class="col-6">
                         <p class="mt-3">ID number</p>
-                        <input type="text">
+                        <input type="text" v-model="newBooking.userID">
                     </div>
                     <div class="col-6">
                         <p class="mt-3">Language</p>
-                        <input type="text">
+                        <input type="text" v-model="newBooking.userLanguage">
                     </div>
                 </div>
                 <p class="mt-3">Choose the time</p>
-                <input type="text">
+                <input type="text" v-model="newBooking.userTime">
                 <p class="mt-3">Choose the Service</p>
-                <input type="text">
+                <input type="text" v-model="newBooking.userService">
             </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn" @click="addABooking">Create booking</button>
       </div>
     </div>
   </div>
@@ -50,8 +50,28 @@
 export default {
     name: 'BookingsModal',
     props: {
-    dayNumber: String,
+    dayNumber: Number,
     dayName: String
+  },
+  data (){
+    return{
+      newBooking: {
+        userID: null,
+        userLanguage: null,
+        userTime: null,
+        userService: null
+      }
+    }},
+  methods:{
+    addABooking(){
+      try {
+        this.$store.dispatch('addBooking', this.newBooking);
+        console.log(`You have successfully created the following booking: userID = ${newBooking.userID}, userLanguage = ${newBooking.userLanguage}, userTime = ${newBooking.userTime}, userService: ${newBooking.userService}`)
+        location.reload();
+      } catch (error){console.log(`the following error was found in the bookings modal when trying to add a new booking: ${error}`);
+      location.reload();
+    }
+    }
   }
 }
 </script>
