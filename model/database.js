@@ -306,5 +306,16 @@ let addABooking = async (userID, userLanguage, userTime, userService) =>{
 }
 // console.log(await addABooking(4, "hella Gibberish", "1am", "layl salaah"))
 
+let editABooking = async (userID, userLanguage, userTime, userService) =>{
+    let editBooking = await pool.query(`
+    UPDATE bookings (userLanguage, userTime, userService) VALUES (?, ?, ?) WHERE userID = ?
+    `, [userLanguage, userTime, userService, userID]) 
+    let [newBooking] = await pool.query(`
+    SELECT * FROM bookings WHERE userID = ?
+    `, [userID])
+    return newBooking
+}
+// console.log(await editABooking(1234, "newLuqad", "1am", "layl salaah"))
+
 
 export {getSlots, getASlot, addASlot, editSlot, deleteSlot, getUsers, getAUser, addAUser, editUser, deleteUser, checkUser, getTimes, getAtime, addAtime, editTime, deleteTime, getbookings, addABooking}
