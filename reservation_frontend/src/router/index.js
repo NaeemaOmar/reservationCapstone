@@ -34,6 +34,13 @@ const routes = [
     component: function () {
       return import('../views/ContactView.vue')
     }
+  },
+  {
+    path: '/userprofile',
+    name: 'userprofile',
+    component: function () {
+      return import('../views/UserProfileView.vue')
+    }
   }
 ]
 

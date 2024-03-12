@@ -4,7 +4,7 @@
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn singleSlot"
+      class=""
       data-bs-toggle="modal"
       :data-bs-target="'#staticBackdrop' + booking.userID"
     >
