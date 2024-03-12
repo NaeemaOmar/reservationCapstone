@@ -7,7 +7,8 @@ const baseUrl = "https://reservationcapstone.onrender.com"
 export default createStore({
   state: {
     allProductsArray: null,
-    theBookingsArray: null
+    theBookingsArray: null,
+    allTheUsers: null
   },
   getters: {
     getBookingsArray: (state)=>{
@@ -20,17 +21,51 @@ export default createStore({
     },
     setTheBookings(state, value){
       state.theBookingsArray = value
+    },
+    setTheUsers(state, value){
+      state.allTheUsers = value
     }
   },
   actions: {
     // USERS ACTIONS START HERE
+    async checkAUser(context, userInfo){
+      try{
+        let theUser = await axios.post(`${baseUrl}/users/login`, userInfo)
+        console.log("below is the theUser.data variable")
+        console.log(theUser.data)
+      } catch (error){
+        console.log(`in the axios, the following error was found while trying to check the user: ${error}`)
+      }
+    },
+    async registerUser(context, newUserInfo){
+      try{
+        let newUser = await axios.post(`${baseUrl}/users`, newUserInfo)
+        console.log("the register user axios is running. Below is the newUser variable")
+        console.log(newUser)
+        console.log("below is the newUser.data variable")
+        console.log(newUser.data)
+      } catch (error){
+        console.log(`In the axios.post, the following error was found while trying to register: ${error}`)
+      }
+    },
+    async getTheUsers({commit}){
+      try{
+        let theUsers = await axios.get(`${baseUrl}/users`)
+        console.log(theUsers.data)
+        commit('setTheUsers', theUsers.data)
+      } catch (error){
+        console.log(`The following error was found while trying to fetch the users: ${error}`)
+      }
+    },
     // BOOKINGS ACTIONS START HERE
     async getBookings({commit}){
       try{
         let theBookings = await axios.get(`${baseUrl}/bookings`);
         console.log(theBookings.data)
         commit('setTheBookings', theBookings.data)
-      } catch(error){console.log(`The following error was found while trying to fetch the bookings: ${error}`)}
+      } catch(error){
+        console.log(`The following error was found while trying to fetch the bookings: ${error}`)
+      }
     },
     async addBooking(context, newBooking){
       try {

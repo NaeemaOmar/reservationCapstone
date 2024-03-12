@@ -163,7 +163,7 @@ export default {
   methods :{
     async deleteBooking (userID) {
       try {
-        this.$store.dispatch('deleteBooking', userID);
+        await this.$store.dispatch('deleteBooking', userID);
         location.reload();
         location.reload();
       } catch (error){console.log(`The following error occured while trying to dispatch the delete booking fx: ${error}`)}
