@@ -123,4 +123,18 @@ button {
   background-color: #000000;
 }
 
+.txtAlignCenter{
+  text-align: center;
+}
+
+.profileIcon {
+  height: 100px;
+}
+
+.profileIconDiv {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
 </style>

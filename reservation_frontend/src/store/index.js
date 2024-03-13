@@ -9,7 +9,8 @@ export default createStore({
   state: {
     allProductsArray: null,
     theBookingsArray: null,
-    allTheUsers: null
+    allTheUsers: null,
+    loginStatus: null
   },
   getters: {
     getBookingsArray: (state)=>{
@@ -25,18 +26,21 @@ export default createStore({
     },
     setTheUsers(state, value){
       state.allTheUsers = value
+    },
+    checkUserStatus(state, value){
+      state.loginStatus = value
     }
   },
   actions: {
     // USERS ACTIONS START HERE
-    async checkAUser(context, userInfo){
+    async checkAUser({commit}, userInfo){
       try{
         let response = await axios.post(`${baseUrl}/users/login`, userInfo)
         console.log("below is the response of the axios.post (hopefully)")
-        console.log(response)
+        commit('checkUserStatus',response.data)
         console.log("The error is not at line 35")
         // let theCookie = $cookies.get("token")
-        let theCookie = $cookies.keys()
+        let theCookie = $cookies.isKey('token')
         console.log("The error is not at line 37. Below is the cookie (hopefully)")
         console.log(theCookie)
         console.log("The error is not at line 39")

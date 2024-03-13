@@ -2,6 +2,7 @@
   <div>
     <h1>Welcome to eHomeAffairs - eBooking</h1>
     <h3 class="mainBrwnTxt">Easy to use, convenient and just a click away</h3>
+    <h4>login status = {{ loginStatus }}</h4>
     <div class="slightlyWhitenedBrownBg mx-3">
       <div class="row d-flex justify-content-evenly">
         <div class="col-12 col-sm-5 mx-1 mainBrwnBg">
@@ -119,7 +120,8 @@ export default {
       checkUserInfo:{
         userID:null,
         txtPassword: null
-      }
+      },
+      loginStatus: null
   }},
   methods:{
     async registerNewUser(){
@@ -134,6 +136,7 @@ export default {
       try{
         console.log("the checkUser method in the login page is running")
         await this.$store.dispatch('checkAUser', this.checkUserInfo)
+        this.loginStatus = this.$store.state.loginStatus 
       }catch(error){
         console.log(`the following error was found while trying to check user credentials in the login pg: ${error}`)
       }

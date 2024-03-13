@@ -126,15 +126,7 @@ export default {
 </script>
 
 <style>
-.profileIcon {
-  height: 100px;
-}
 
-.profileIconDiv {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-}
 
 .centerBtn{
     margin-inline: 40%;

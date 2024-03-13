@@ -2,9 +2,11 @@
     <div class="blackBg footerHeight
 ">
             <br>
-            <div class="d-flex testBorder justify-content-between mx-3">
-                <p class="mainBrwnTxt">Disclaimer: this is a dha eBooking clone made as part of a capstone project</p>
-                <p class="mainBrwnTxt">& copy NaeemaOmar 2024</p>
+            <div class="testBorder mx-3">
+                <p class="mainBrwnTxt txtAlignCenter">Disclaimer: this is a dha eBooking clone made as part of a capstone project</p>
+                <!-- <br><br> -->
+                <!-- <br> doesn't work in the presence of the d-flex but works otherwise-->
+                <p class="mainBrwnTxt txtAlignCenter">& copy NaeemaOmar 2024</p>
             </div>
     </div>
 </template>
