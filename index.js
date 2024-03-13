@@ -1,7 +1,7 @@
 import express from 'express'
 import {config} from 'dotenv'
 import cors from 'cors'
-import cookie from 'cookie-parser'
+import cookieParser from 'cookie-parser'
 import slotRoutes from './routes/slotRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import timeRoutes from './routes/timeRoutes.js'
@@ -12,11 +12,13 @@ config();
 
 const app = express()
 
-app.use(cors())
+// app.use(cors())
+// above line is commented out because i can't have 2 cors so keep the one w/ the options
 
 const corsOptions = {
     // Put in the firebase address here so Godwin can access it
     origin: "http://localhost:8080",
+    credentials:true,
     // Please work, amen
     optionsSuccessStatus:200
 }
@@ -24,7 +26,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.use(express.json())
-app.use(cookie())
+app.use(cookieParser())
 
 app.use(express.static('views'))
 
