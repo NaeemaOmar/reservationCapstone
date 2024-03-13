@@ -1,7 +1,7 @@
 import express from 'express'
 import {config} from 'dotenv'
 import cors from 'cors'
-import cookieParser from 'cookie-parser'
+import cookie from 'cookie-parser'
 import slotRoutes from './routes/slotRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import timeRoutes from './routes/timeRoutes.js'
@@ -24,7 +24,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.use(express.json())
-app.use(cookieParser())
+app.use(cookie())
 
 app.use(express.static('views'))
 

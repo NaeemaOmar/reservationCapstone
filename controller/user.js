@@ -1,4 +1,8 @@
-import {getUsers, getAUser, addAUser, editUser, deleteUser, checkUser} from '../model/database.js'
+import {getUsers, getAUser, addAUser, editUser, deleteUser} from '../model/database.js'
+import configPg from '../config/config.js'
+const pool = configPg.pool
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 export default {
     getAllUsers: async(req, res)=>{
@@ -29,6 +33,33 @@ export default {
     },
     checkAUser: async (req, res) => {
         let {userID, txtPassword} = req.body
+        let checkUser = async(userID, txtPassword)=>{
+            try {
+                let [existingUser] = await pool.query(`
+                SELECT * FROM users WHERE userID = ?
+                `, [userID])
+                if(existingUser.length>0){
+                    console.log(`The following id is reg: ${userID} `)
+                    let [[{hashedPassword}]] = await pool.query(`SELECT hashedPassword FROM users WHERE userID =?`, [userID])
+                    let [[firstName]] = await pool.query(`SELECT firstName FROM users WHERE userID =?`, [userID])
+                    let comparePassword = await bcrypt.compare(txtPassword, hashedPassword)
+                    console.log(`The result of the bcrypt.compare is: ${comparePassword}`)
+                    if(comparePassword===true){
+                        let token = jwt.sign(firstName, process.env.SECRET_KEY, {expiresIn: '1h'})
+                        console.log(`The password is correct and the following token is assigned: token = ${token}`)
+                        let insertToken = await pool.query(`UPDATE users SET token = ? WHERE userID = ?`, [token, userID]);
+                        console.log("the token has been assigned. attempting to set to cookie. WISH ME LUCK")
+                        res.cookie('token', token,{httpOnly:true}).sendStatus(200);
+                    }
+                    // return getAUser(userID)
+                } else{
+                    console.log(`The following id does not exist in the users database: ${userID}`)
+                    return "oof"
+                }
+            } catch(err){
+                console.log(`The following error was found while trying to check the user in the controller: ${err}`)
+            }
+        }
         let checkNow = await checkUser(userID, txtPassword)
         res.send(checkNow)
     }
