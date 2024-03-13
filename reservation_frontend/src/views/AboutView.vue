@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about mx-3">
     <h1>About Home Affairs eBooking services</h1>
     <h3 class="mainBrwnTxt">Easy to use, convenient and just a click away</h3>
     <h5>
@@ -21,7 +21,7 @@
       <br /><br />
       It was our hope that this would create more pleasant opportunities for
       both our clients as well as our staff and since then, this has been the
-      case.
+      case for many South Africans.
       <br /><br />
       While the current booking system is not equally accessible to all South
       Africans, we the Department of Home Affairs hope to extend the booking
