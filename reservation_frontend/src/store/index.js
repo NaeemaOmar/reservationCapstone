@@ -1,8 +1,9 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-const baseUrl = "https://reservationcapstone.onrender.com"
-
+// const baseUrl = "https://reservationcapstone.onrender.com"
+const baseUrl = "http://localhost:3336"
+axios.defaults.withCredentials = true
 
 export default createStore({
   state: {
@@ -34,7 +35,8 @@ export default createStore({
         console.log("below is the response of the axios.post (hopefully)")
         console.log(response)
         console.log("The error is not at line 35")
-        let theCookie = $cookies.get("token")
+        // let theCookie = $cookies.get("token")
+        let theCookie = $cookies.keys()
         console.log("The error is not at line 37. Below is the cookie (hopefully)")
         console.log(theCookie)
         console.log("The error is not at line 39")
