@@ -49,7 +49,8 @@ export default {
                         console.log(`The password is correct and the following token is assigned: token = ${token}`)
                         let insertToken = await pool.query(`UPDATE users SET token = ? WHERE userID = ?`, [token, userID]);
                         console.log("the token has been assigned. attempting to set to cookie. WISH ME LUCK")
-                        res.cookie('token', token,{httpOnly:false}).sendStatus(200);
+                        // res.cookie('token', token,{httpOnly:false}).sendStatus(200);
+                        res.cookie('token', token,{httpOnly:false});
                     }
                     // return getAUser(userID)
                 } else{
