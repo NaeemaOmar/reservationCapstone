@@ -1,8 +1,8 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-// const baseUrl = "https://reservationcapstone.onrender.com"
-const baseUrl = "http://localhost:3336"
+const baseUrl = "https://reservationcapstone.onrender.com"
+// const baseUrl = "http://localhost:3336"
 axios.defaults.withCredentials = true
 
 export default createStore({
