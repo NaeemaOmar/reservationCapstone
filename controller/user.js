@@ -49,12 +49,20 @@ export default {
                         console.log(`The password is correct and the following token is assigned: token = ${token}`)
                         let insertToken = await pool.query(`UPDATE users SET token = ? WHERE userID = ?`, [token, userID]);
                         console.log("the token has been assigned. attempting to set to cookie. WISH ME LUCK")
-                        res.cookie('token', token,{httpOnly:false}).sendStatus(200);
+                        res.cookie('token', token,{httpOnly:false});
+                        // res.cookie('token', token,{httpOnly:false}).sendStatus(200);
+                        // NOTE: the .sendStatus functions as the res.send and sends the word 'ok' in this isnstance since that is what status 200 says 
+
+                        let worked = true;
+                        res.send(worked)
                     }
                     // return getAUser(userID)
+                    let worked = false;
+                    res.send(worked)
                 } else{
                     console.log(`The following id does not exist in the users database: ${userID}`)
-                    return "oof"
+                    let worked = false;
+                    res.send(worked)
                 }
             } catch(err){
                 console.log(`The following error was found while trying to check the user in the controller: ${err}`)
