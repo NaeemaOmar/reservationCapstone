@@ -37,23 +37,16 @@ export default createStore({
       try{
         let response = await axios.post(`${baseUrl}/users/login`, userInfo)
         console.log("below is the response of the axios.post (hopefully)")
-        commit('checkUserStatus',response.data)
+        console.log(response.data)
+        commit('checkUserStatus', response.data)
         console.log("The error is not at line 35")
         // let theCookie = $cookies.get("token")
         let theCookie = $cookies.isKey('token')
         console.log("The error is not at line 37. Below is the cookie (hopefully)")
         console.log(theCookie)
+        // The problem I'm having is that the above line is returning 'false' eventhough I can literally see the token in my cookies
         console.log("The error is not at line 39")
-
-        //The code below uses normal js instead of vue-cookies
-        // let token = response.headers['set-cookie'].find(cookie => cookie.startsWith('token')).split('=')[1];
-        // console.log(response);
-        // console.log("The error is not at line 38")
-        // localStorage.setItem('token', token)
-        // console.log("The error is not at line 4")
-        // console.log("below is the token '(hopefully)'")
-        // console.log(token)
-        // console.log("The error is not at line 40")
+        return response.data
       } catch (error){
         console.log(`in the axios, the following error was found while trying to check the user: ${error}`)
       }
