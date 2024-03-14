@@ -55,12 +55,15 @@ export default {
       async logOut(){
         try{
           console.log("The logout fx is running via the navbar")
+          console.log("Part 1 of the logout fx (setting user status to false) is running now")
           let logOut = false;
           let checkTheuser = JSON.parse(localStorage.getItem('checkTheuser'))
           checkTheuser = logOut
           console.log("Below is the checkTheuser variable after it's been set to false (hopefully)")
           console.log(checkTheuser)
           localStorage.setItem('checkTheuser', JSON.stringify(checkTheuser))
+          console.log("Part 2 of the logout fx (clearing/resetting the local storage) is running now")
+          localStorage.clear();
           location.reload()
         } catch (error){
           console.log(`The following error occured while trying to use the log-out btn in the navBar: ${error}`)

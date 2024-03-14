@@ -191,13 +191,13 @@ export default {
           "below i'm setting the checkTheuser variable to local storage. hopefully it works"
         );
         localStorage.setItem("checkTheuser", JSON.stringify(checkTheuser));
-        location.reload()
+        // location.reload()
       } catch (error) {
         console.log(
           `the following error was found while trying to check user credentials in the login pg: ${error}`
         );
       }
-    },
+    }
   },
   mounted() {
     try {
@@ -218,6 +218,13 @@ export default {
         `The following error was found while trying to set the oginStatus at the mounted of the loginPg: ${error}`
       );
     }
+    // Below is the getCookie fx
+    // try{
+    //     console.log("The mounted getCookie fx is now runing in the loginPg")
+    //     this.$store.dispatch('getCookie')
+    //   } catch (error){
+    //     console.log(`The following error was found while trying to run the getCookie fx in the login pg: ${error}`)
+    //   }
   },
 };
 </script>
