@@ -10,7 +10,8 @@ export default createStore({
     allProductsArray: null,
     theBookingsArray: null,
     allTheUsers: null,
-    loginStatus: null
+    loginStatus: null,
+    singleUser:null
   },
   getters: {
     getBookingsArray: (state)=>{
@@ -62,6 +63,15 @@ export default createStore({
         commit('setTheUsers', theUsers.data)
       } catch (error){
         console.log(`The following error was found while trying to fetch the users: ${error}`)
+      }
+    },
+    async getAUser({commit}, userID){
+      try {
+        let singleUser = await axios.get(`${baseUrl}/users/${userID}`)
+        console.log("Below is what the getSingleUser axios returns")
+        console.log(singleUser.data)
+      } catch(error){
+        console.log(`The following error occured in the axios.get of the getSingleUser fx: ${error}`)
       }
     },
     // BOOKINGS ACTIONS START HERE

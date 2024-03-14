@@ -93,6 +93,9 @@
             />
             <br />
             <button class="my-3" @click="checkUser()">Login</button>
+            <button @click="setCurrentUserInfo()">
+              Set userInfo to localStorage
+            </button>
           </div>
         </div>
       </div>
@@ -164,6 +167,19 @@ export default {
         );
       }
     },
+    setCurrentUserInfo() {
+      try {
+        console.log("The setCurrentUser to local storage fx is running now");
+        localStorage.setItem(
+          "currentUserInfo",
+          JSON.stringify(this.checkUserInfo)
+        );
+      } catch (error) {
+        console.log(
+          `The followinng error occured while trying to set the checkUser info (id number + txtPassword) to the local storage: ${error}`
+        );
+      }
+    },
     async checkUser() {
       try {
         console.log("the checkUser method in the login page is running");
@@ -175,21 +191,30 @@ export default {
           "We're back in the checkUser fx of the loginPg. Below is the value of the checkTheUser.token variable (hopefully)"
         );
         console.log(checkTheuser.token);
-        console.log("Below is the checkTheuser.worked variable")
-        console.log(checkTheuser.worked)
+        console.log("Below is the checkTheuser.worked variable");
+        console.log(checkTheuser.worked);
         console.log(
           "below i'm setting the checkTheuser.token variable to local storage. hopefully it works"
         );
         localStorage.setItem("userToken", JSON.stringify(checkTheuser.token));
-        console.log("Below I'm setting the checkTheuser.worked variable to local storage. Pray for me")
-        localStorage.setItem("checkUserStatus", JSON.stringify(checkTheuser.worked))
-        location.reload()
+        console.log(
+          "Below I'm setting the checkTheuser.worked variable to local storage. Pray for me"
+        );
+        localStorage.setItem(
+          "checkUserStatus",
+          JSON.stringify(checkTheuser.worked)
+        );
+        await this.setCurrentUserInfo()
+        history.go(-1)
+        // The line below goes to the previous page (history-wise) instead of reloading. This allows the login navLink to disappear neatly
+        // location.reload();
       } catch (error) {
         console.log(
           `the following error was found while trying to check user credentials in the login pg: ${error}`
         );
       }
-    }
+    },
+
   },
   mounted() {
     try {
@@ -199,11 +224,12 @@ export default {
         `the following error was found while trying to mount the user in the login pg: ${error}`
       );
     }
-    try{
-      this.loginStatus = JSON.parse(localStorage.getItem('checkUserStatus'))
-      
-    } catch(error){
-      console.log(`The following error was found when getting the loginStatus at the mounted of the loginPg: ${error} `)
+    try {
+      this.loginStatus = JSON.parse(localStorage.getItem("checkUserStatus"));
+    } catch (error) {
+      console.log(
+        `The following error was found when getting the loginStatus at the mounted of the loginPg: ${error} `
+      );
     }
   },
 };
