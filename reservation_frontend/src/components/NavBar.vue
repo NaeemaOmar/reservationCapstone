@@ -32,6 +32,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/admin">Admin</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <button @click="logOut()">Log out</button>
+            </a>
+          </li>
         </ul>
       </div>
     <!-- </div> -->
@@ -45,7 +50,23 @@
 // Saving DHA banner img here: https://i.ibb.co/0QbW3FS/DHA-banner.png
 
 export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    methods: {
+      async logOut(){
+        try{
+          console.log("The logout fx is running via the navbar")
+          let logOut = false;
+          let checkTheuser = JSON.parse(localStorage.getItem('checkTheuser'))
+          checkTheuser = logOut
+          console.log("Below is the checkTheuser variable after it's been set to false (hopefully)")
+          console.log(checkTheuser)
+          localStorage.setItem('checkTheuser', JSON.stringify(checkTheuser))
+          location.reload()
+        } catch (error){
+          console.log(`The following error occured while trying to use the log-out btn in the navBar: ${error}`)
+        }
+      }
+    }
 }
 
 </script>
