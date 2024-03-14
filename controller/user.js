@@ -51,12 +51,12 @@ export default {
                         console.log("the token has been assigned. attempting to set to cookie. WISH ME LUCK")
                         // res.cookie('token', token,{httpOnly:false}).sendStatus(200);
                         res.cookie('token', token,{httpOnly:false, expiresIn: '1h'});
-                        let worked = true;
-                        res.send(worked)
+                        // let worked = true;
+                        res.send({worked:true, token:token})
                     } else {
                         // return getAUser(userID)
-                        let worked = false;
-                        res.send(worked)
+                        // let worked = false;
+                        res.send({worked: false})
                     }
                 } else{
                     console.log(`The following id does not exist in the users database: ${userID}`)
