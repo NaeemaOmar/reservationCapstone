@@ -93,9 +93,6 @@
             />
             <br />
             <button class="my-3" @click="checkUser()">Login</button>
-            <button @click="setCurrentUserInfo()">
-              Set userInfo to localStorage
-            </button>
           </div>
         </div>
       </div>
