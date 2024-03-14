@@ -164,18 +164,6 @@ export default {
         );
       }
     },
-    // below (line 136 till 146) is the perfectly functioning checkUser fx. I want to find a way to store the true/false in local storage but I don't want to lose my original so I'm commenting it out
-    // async checkUser(){
-    //   try{
-    //     console.log("the checkUser method in the login page is running")
-    //     let checkTheuser = await this.$store.dispatch('checkAUser', this.checkUserInfo)
-    //     console.log("We're back in the checkUser fx of the loginPg. Below is the value of the checkTheUser variable (hopefully)")
-    //     console.log(checkTheuser)
-    //     this.loginStatus = checkTheuser
-    //   }catch(error){
-    //     console.log(`the following error was found while trying to check user credentials in the login pg: ${error}`)
-    //   }
-    // },
     async checkUser() {
       try {
         console.log("the checkUser method in the login page is running");
@@ -184,14 +172,18 @@ export default {
           this.checkUserInfo
         );
         console.log(
-          "We're back in the checkUser fx of the loginPg. Below is the value of the checkTheUser variable (hopefully)"
+          "We're back in the checkUser fx of the loginPg. Below is the value of the checkTheUser.token variable (hopefully)"
         );
-        console.log(checkTheuser);
+        console.log(checkTheuser.token);
+        console.log("Below is the checkTheuser.worked variable")
+        console.log(checkTheuser.worked)
         console.log(
-          "below i'm setting the checkTheuser variable to local storage. hopefully it works"
+          "below i'm setting the checkTheuser.token variable to local storage. hopefully it works"
         );
-        localStorage.setItem("checkTheuser", JSON.stringify(checkTheuser));
-        // location.reload()
+        localStorage.setItem("userToken", JSON.stringify(checkTheuser.token));
+        console.log("Below I'm setting the checkTheuser.worked variable to local storage. Pray for me")
+        localStorage.setItem("checkUserStatus", JSON.stringify(checkTheuser.worked))
+        location.reload()
       } catch (error) {
         console.log(
           `the following error was found while trying to check user credentials in the login pg: ${error}`
@@ -207,24 +199,12 @@ export default {
         `the following error was found while trying to mount the user in the login pg: ${error}`
       );
     }
-    // trying to set the loginSatus fr localStorage
-    try {
-      let frLocalStorage = JSON.parse(localStorage.getItem("checkTheuser"));
-      console.log("below is whatever is returned fr the local storage in the mounted of the loginPg");
-      console.log(frLocalStorage);
-      this.loginStatus = frLocalStorage;
-    } catch (error) {
-      console.log(
-        `The following error was found while trying to set the oginStatus at the mounted of the loginPg: ${error}`
-      );
+    try{
+      this.loginStatus = JSON.parse(localStorage.getItem('checkUserStatus'))
+      
+    } catch(error){
+      console.log(`The following error was found when getting the loginStatus at the mounted of the loginPg: ${error} `)
     }
-    // Below is the getCookie fx
-    // try{
-    //     console.log("The mounted getCookie fx is now runing in the loginPg")
-    //     this.$store.dispatch('getCookie')
-    //   } catch (error){
-    //     console.log(`The following error was found while trying to run the getCookie fx in the login pg: ${error}`)
-    //   }
   },
 };
 </script>

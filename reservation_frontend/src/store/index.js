@@ -33,24 +33,12 @@ export default createStore({
   },
   actions: {
     // USERS ACTIONS START HERE
-    async getCookie(){
-      // I'll try the cookies.keys() method now
-        console.log("The getCookie fx is running now")
-        let AllTheCookies = $cookies.keys()  
-        console.log("Below is the response for the $cookies.keys() method")
-        console.log(AllTheCookies)    
-        // The 3 lines above did not return the token so I believe this part of the fx needs to be separately called before the page loads
-        let theCookie = $cookies.get('token')
-        console.log("below is the single cookie")
-        console.log(theCookie)
-    },
     async checkAUser({commit}, userInfo){
       try{
         let response = await axios.post(`${baseUrl}/users/login`, userInfo)
-        console.log("below is the response of the axios.post (hopefully)")
+        console.log("below is the response.data of the axios.post (hopefully)")
         console.log(response.data)
-        commit('checkUserStatus', response.data)
-        console.log("The error is not at line 35")
+        commit('checkUserStatus', response.data.worked)
         return response.data
       } catch (error){
         console.log(`in the axios, the following error was found while trying to check the user: ${error}`)

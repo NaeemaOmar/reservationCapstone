@@ -21,13 +21,13 @@
             <a class="nav-link" href="/bookings">Bookings</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="/login" v-if="!loginStatus">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contact us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/userprofile">User Profile</a>
+            <a class="nav-link" href="/userprofile" v-if="loginStatus">User Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin">Admin</a>
@@ -51,6 +51,10 @@
 
 export default {
     name: 'Navbar',
+    data(){
+      return{
+        loginStatus:null
+      }},
     methods: {
       async logOut(){
         try{
@@ -69,6 +73,14 @@ export default {
           console.log(`The following error occured while trying to use the log-out btn in the navBar: ${error}`)
         }
       }
+    },
+    mounted(){
+      try{
+      this.loginStatus = JSON.parse(localStorage.getItem('checkUserStatus'))
+      
+    } catch(error){
+      console.log(`The following error was found when getting the loginStatus at the mounted of the navBar: ${error} `)
+    }
     }
 }
 
