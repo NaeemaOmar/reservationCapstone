@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="ms-3">Welcome, {{ name }} {{ surName }}</h1>
+    <h1 class="ms-3">Welcome, {{ this.currentUserInfo.firstName }} {{ this.currentUserInfo.lastName }}</h1>
     <div class="row">
         <div class="col-3 ms-4 profileIconDiv darkGreyBg d-flex justify-content-center">
             <img class="profileIcon" src="https://i.ibb.co/zF1SSmP/userprofile-removebg.png" alt="">
@@ -8,19 +8,20 @@
         <div class="col-9 mx-2 slightlyWhitenedBrownBg">
             <h2>Adminstrator details</h2>
             <div class="row">
-                <p>Name: {{ name }} {{ surName }} </p>
+                <p>Name: {{ this.currentUserInfo.firstName }} {{ this.currentUserInfo.lastName  }} </p>
             </div>
             <div class="row d-flex justify-content-evenly">
                 <div class="col-5">
-                    <p>Language: {{ Language }}</p>
+                    <p>Language: {{ this.currentUserInfo.userLanguage }}</p>
                 </div>
                 <div class="col-3">
-                    <p>Age: {{ Age }}</p>
+                    <p>Age: {{ this.currentUserInfo.userAge }}</p>
                 </div>
                 <div class="col-4">
-                    <p>Gender:{{ Gender }}</p>
+                    <p>Gender:{{ this.currentUserInfo.gender }}</p>
                 </div>
             </div>
+            <button centerBtn>Edit details</button>
         </div>
     </div>
     <h3 class="ms-3 mainBrwnTxt">Below are the users</h3>
@@ -34,8 +35,7 @@
                     <td>userAge</td>
                     <td>gender</td>
                     <td>userRole</td>
-                    <td>emailAdd</td>
-                    <td>cellNumber</td>
+                    <td>Action</td>
                 </tr>
             </thead>
             <tbody>
@@ -46,8 +46,10 @@
                     <td>{{user.userAge}}</td>
                     <td>{{user.gender}}</td>
                     <td>{{user.userRole}}</td>
-                    <td>{{user.emailAdd}}</td>
-                    <td>{{user.cellNumber}}</td>
+                    <td>
+                        <button>edit</button>
+                        <button @click="deleteTheUser(user.userID)">delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -61,17 +63,41 @@
 export default {
   data() {
     return {
-      name: "Naeema",
-      surName: "Omar",
-      Language: "Afrikaans",
-      Age: 25,
-      Gender:"female"
+        currentUserInfo:[]
     };
+  },
+  methods:{
+    async deleteTheUser(userID){
+      try{
+        this.$store.dispatch('deleteAUser', userID)
+        location.reload()
+        location.reload()
+      } catch(error){
+        console.log(`The following error occured in the delete user method of the Admin pg: ${error}`)
+      }
+    }
   },
   mounted (){
     try {
         this.$store.dispatch('getTheUsers')
-    } catch(error){console.log(`In the adminPg, the following error was found while trying to call usersArray: ${error}`)}
+    } 
+    catch(error)
+    {
+        console.log(`In the adminPg, the following error was found while trying to call usersArray: ${error}`)
+    }
+    try {
+      console.log("Below is the fx to get the fullUserDeets from the localStorage")
+      this.currentUserInfo = JSON.parse(localStorage.getItem('fullUserDeets'))
+    } catch(error){
+      console.log(`The following error occured while trying to load fullCurrentUserDeets from local storage on the mounted of the userProfile pg: ${error}`)
+    }
   }
 };
 </script>
+
+<style>
+.centerBtn {
+  margin-inline: 40%;
+  width: 100px;
+}
+</style>

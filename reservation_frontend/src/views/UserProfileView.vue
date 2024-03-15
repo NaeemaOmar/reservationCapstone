@@ -50,36 +50,11 @@
         </div>
         <div class="centerBtn">
           <button>Edit details</button>
+          <button @click="deleteTheUser(this.currentUserInfo.userID)">Delete user</button>
         </div>
       </div>
     </div>
     <br /><br />
-    <h3 class="ms-3 mainBrwnTxt">Below are the current users and their details</h3>
-    <div class="table-resonsive">
-      <table class="ms-3 table">
-        <tr>
-          <th>userID</th>
-          <th>Full name</th>
-          <th>Age</th>
-          <th>Gender</th>
-          <th>Role</th>
-          <th>Language</th>
-          <th>Action</th>
-        </tr>
-        <tr v-for="user in this.$store.state.allTheUsers" :key="user.userID">
-          <td>{{ user.userID }}</td>
-          <td>{{ user.firstName }} {{ user.lastName }}</td>
-          <td>{{ user.userAge }}</td>
-          <td>{{ user.gender }}</td>
-          <td>{{ user.userRole }}</td>
-          <td>{{ user.userLanguage }}</td>
-          <td>
-            <button class="mainBrwnBg">Edit</button>
-            <button class="buttonStyle">Delete</button>
-          </td>
-        </tr>
-      </table>
-    </div>
     <br /><br />
     <h3 class="ms-3 mainBrwnTxt">Below are your booking(s)</h3>
     <div class="table-responsive">
