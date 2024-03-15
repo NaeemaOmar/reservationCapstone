@@ -54,6 +54,33 @@
       </div>
     </div>
     <br /><br />
+    <h3 class="ms-3 mainBrwnTxt">Below are the current users and their details</h3>
+    <div class="table-resonsive">
+      <table class="ms-3 table">
+        <tr>
+          <th>userID</th>
+          <th>Full name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Role</th>
+          <th>Language</th>
+          <th>Action</th>
+        </tr>
+        <tr v-for="user in this.$store.state.allTheUsers" :key="user.userID">
+          <td>{{ user.userID }}</td>
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.userAge }}</td>
+          <td>{{ user.gender }}</td>
+          <td>{{ user.userRole }}</td>
+          <td>{{ user.userLanguage }}</td>
+          <td>
+            <button class="mainBrwnBg">Edit</button>
+            <button class="buttonStyle">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br /><br />
     <h3 class="ms-3 mainBrwnTxt">Below are your booking(s)</h3>
     <div class="table-responsive">
       <table class="ms-3 table">
@@ -95,14 +122,6 @@ import EditBookingsModal from "@/components/EditBookingsModal.vue";
 export default {
   data() {
     return {
-      firstName: "Naeema",
-      lastName: "Omar",
-      userLanguage: "English",
-      userID: 1234,
-      cellphone: 1234567891,
-      gender: "thingy",
-      age: 25,
-      userRole: "client",
       currentUserInfo: [],
       currentUserID: null,
     };
@@ -122,8 +141,13 @@ export default {
         );
       }
     },
-
-
+    async deleteTheUser(userID){
+      try{
+        this.$store.dispatch('deleteAUser', userID)
+      } catch(error){
+        console.log(`The following error occured in the delete user method of the userProfile pg: ${error}`)
+      }
+    }
   },
   mounted() {
     try {
@@ -139,6 +163,11 @@ export default {
     } catch(error){
       console.log(`The following error occured while trying to load fullCurrentUserDeets from local storage on the mounted of the userProfile pg: ${error}`)
     }
+    try {
+      this.$store.dispatch('getTheUsers')
+    } catch (error){
+      console.log(`The following error occured when trying to get all users fr state on the mounted of the userProfile pg: ${error}`)
+    }
   },
 };
 </script>
@@ -148,4 +177,15 @@ export default {
   margin-inline: 40%;
   width: 100px;
 }
+
+.buttonStyle {
+  background-color: #C36406;
+  color: #343A40 ;
+  border-radius: 20px;
+  border-color: #C36406;
+  border: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
 </style>

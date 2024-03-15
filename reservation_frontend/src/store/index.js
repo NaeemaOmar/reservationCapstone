@@ -66,7 +66,7 @@ export default createStore({
         console.log(theUsers.data)
         commit('setTheUsers', theUsers.data)
       } catch (error){
-        console.log(`The following error was found while trying to fetch the users: ${error}`)
+        console.log(`The following error was found while trying to fetch the users in the axios.get: ${error}`)
       }
     },
     async getAUser({commit}, userID){
@@ -78,6 +78,15 @@ export default createStore({
         return singleUser.data
       } catch(error){
         console.log(`The following error occured in the axios.get of the getSingleUser fx: ${error}`)
+      }
+    },
+    async deleteAUser(context, userID){
+      try{
+        let deletedUser = await axios.delete(`${baseUrl}/users/${userID}`)
+        console.log("The delete user axios is running now. Below is the user to be deleted")
+        console.log(deletedUser)
+      } catch(error){
+        console.log(`The following error occured while trying to run the axios.delete in the store: ${error}`)
       }
     },
     // BOOKINGS ACTIONS START HERE
