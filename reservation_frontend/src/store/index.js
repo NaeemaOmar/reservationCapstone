@@ -11,7 +11,8 @@ export default createStore({
     theBookingsArray: null,
     allTheUsers: null,
     loginStatus: null,
-    singleUser:null
+    singleUser:null,
+    currentUser: null
   },
   getters: {
     getBookingsArray: (state)=>{
@@ -30,6 +31,9 @@ export default createStore({
     },
     checkUserStatus(state, value){
       state.loginStatus = value
+    },
+    setCurrentUser(state, value){
+      state.currentUser = value
     }
   },
   actions: {
@@ -70,6 +74,7 @@ export default createStore({
         let singleUser = await axios.get(`${baseUrl}/users/${userID}`)
         console.log("Below is what the getSingleUser axios returns")
         console.log(singleUser.data)
+        commit('setCurrentUser', singleUser.data)
         return singleUser.data
       } catch(error){
         console.log(`The following error occured in the axios.get of the getSingleUser fx: ${error}`)

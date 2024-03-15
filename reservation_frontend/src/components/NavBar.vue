@@ -68,7 +68,7 @@ export default {
           localStorage.setItem('checkTheuser', JSON.stringify(checkTheuser))
           console.log("Part 2 of the logout fx (clearing/resetting the local storage) is running now")
           localStorage.clear();
-          location.reload()
+          history.go(-1)
         } catch (error){
           console.log(`The following error occured while trying to use the log-out btn in the navBar: ${error}`)
         }

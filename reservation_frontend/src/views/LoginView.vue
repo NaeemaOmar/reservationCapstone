@@ -164,16 +164,48 @@ export default {
         );
       }
     },
-    setCurrentUserInfo() {
+    async setFullCurrentUserDeets(currentUserInfoID) {
+      console.log(
+        "The setFullCurrentUserDeets fx just started and immediately ran the getAUser fx of the store"
+      );
+      let [fullUserDeets] = await this.$store.dispatch(
+        "getAUser",
+        currentUserInfoID
+      );
+      console.log(
+        "We are now back in the setFullCurrentUserDeets fx of the login pg"
+      );
+      console.log(
+        "Below is the variable/array returned after running the store fx"
+      );
+      console.log(fullUserDeets);
+      console.log("the fullUserDeets will now be set to localStorage");
+      localStorage.setItem("fullUserDeets", JSON.stringify(fullUserDeets));
+    },
+    async setCurrentUserInfo() {
       try {
+        // Since getAUser in the userProfile didn't work imma try to get this to work in the login pg
         console.log("The setCurrentUser to local storage fx is running now");
         localStorage.setItem(
           "currentUserInfo",
           JSON.stringify(this.checkUserInfo)
         );
+        console.log(
+          "The setFullCurrentUserDeets fx just started and immediately ran the getAUser fx of the store"
+        );
+        let [fullUserDeets] = await this.$store.dispatch(
+          "getAUser",
+          this.checkUserInfo.userID
+        );
+        console.log(
+          "Below is the variable/array returned after running the getAUser store fx"
+        );
+        console.log(fullUserDeets);
+        console.log("the fullUserDeets will now be set to localStorage");
+        localStorage.setItem("fullUserDeets", JSON.stringify(fullUserDeets));
       } catch (error) {
         console.log(
-          `The followinng error occured while trying to set the checkUser info (id number + txtPassword) to the local storage: ${error}`
+          `The followinng error occured while trying to set the checkUser info (id number + txtPassword) as well as the fullUserDeets to the local storage: ${error}`
         );
       }
     },
@@ -201,17 +233,14 @@ export default {
           "checkUserStatus",
           JSON.stringify(checkTheuser.worked)
         );
-        await this.setCurrentUserInfo()
-        history.go(-1)
-        // The line below goes to the previous page (history-wise) instead of reloading. This allows the login navLink to disappear neatly
-        // location.reload();
+        await this.setCurrentUserInfo();
+        history.go(-1);
       } catch (error) {
         console.log(
           `the following error was found while trying to check user credentials in the login pg: ${error}`
         );
       }
     },
-
   },
   mounted() {
     try {

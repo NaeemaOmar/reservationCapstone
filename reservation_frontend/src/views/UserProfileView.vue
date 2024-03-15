@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>fetching user info from the localStorage begins here</h1>
-    <button @click="getCurrentUserDeets()">Get currentUserInfo</button>
+    <h1>{{ this.currentUserInfo}}</h1>
     <h1 class="ms-3">Welcome, {{ firstName }} {{ lastName }}</h1>
     <br />
     <div class="row d-flex justify-content-center">
@@ -124,32 +124,8 @@ export default {
         );
       }
     },
-    async getCurrentUserDeets() {
-      try {
-        console.log(
-          "the fx to get the current userInf fr local storage is running in the userProfile now"
-        );
-        this.currentUserInfo = JSON.parse(
-          localStorage.getItem("currentUserInfo")
-        );
-        let theUserID = this.currentUserInfo.userID;
-        console.log(`This is the userID fr localStorage: ${theUserID}`);
-        this.currentUserID = this.currentUserInfo.userID;
-        console.log("Below is the this.currentUserId variable after being set");
-        console.log(this.currentUserID);
-        console.log("Now I'm starting the getAUser fx from the store");
-        let fullUserDeets = await this.$store.dispatch(
-          "getAUser",
-          this.currentUserID
-        );
-        console.log("Below is the fullUserDeets variable");
-        console.log(fullUserDeets);
-      } catch (error) {
-        console.log(
-          `The following error occured while trying to get the individual user info from the local storage on the mounted of the userProfile: ${error}`
-        );
-      }
-    },
+
+
   },
   mounted() {
     try {
@@ -158,6 +134,12 @@ export default {
       console.log(
         `The following error was found while trying to dispatch the getBookings action`
       );
+    }
+    try {
+      console.log("Below is the fx to get the fullUserDeets from the localStorage")
+      this.currentUserInfo = JSON.parse(localStorage.getItem('fullUserDeets'))
+    } catch(error){
+      console.log(`The following error occured while trying to load fullCurrentUserDeets from local storage on the mounted of the userProfile pg: ${error}`)
     }
   },
 };
