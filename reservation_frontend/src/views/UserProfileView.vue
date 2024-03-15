@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1>fetching user info from the localStorage begins here</h1>
-    <h1>{{ this.currentUserInfo}}</h1>
-    <h1 class="ms-3">Welcome, {{ firstName }} {{ lastName }}</h1>
+    <h1 class="ms-3">Welcome, {{ this.currentUserInfo.firstName }} {{ this.currentUserInfo.lastName }}</h1>
     <br />
     <div class="row d-flex justify-content-center">
       <div
@@ -20,34 +18,34 @@
             <h2>User info</h2>
           </div>
           <div class="col-6 mt-2 d-flex justify-content-end">
-            <p c>Language: {{ userLanguage }}</p>
+            <p c>Language: {{ this.currentUserInfo.userLanguage }}</p>
           </div>
         </div>
         <div class="row d-flex">
-          <p>Username (ID number): {{ userID }}</p>
+          <p>Username (ID number): {{ this.currentUserInfo.userID }}</p>
         </div>
         <div class="row testBorder">
           <div class="col-6 mt-1">
-            <p c>firstName: {{ firstName }}</p>
+            <p c>firstName: {{ this.currentUserInfo.firstName }}</p>
           </div>
           <div class="col-6 mt-2 d-flex justify-content-start">
-            <p c>lastName: {{ lastName }}</p>
-          </div>
-        </div>
-        <div class="row testBorder">
-          <div class="col-6 mt-1">
-            <p c>cellphone: {{ cellphone }}</p>
-          </div>
-          <div class="col-6 mt-2 d-flex justify-content-start">
-            <p c>gender: {{ gender }}</p>
+            <p c>lastName: {{ this.currentUserInfo.lastName }}</p>
           </div>
         </div>
         <div class="row testBorder">
           <div class="col-6 mt-1">
-            <p c>age: {{ age }}</p>
+            <p c>cellphone: {{ this.currentUserInfo.cellNumber }}</p>
           </div>
           <div class="col-6 mt-2 d-flex justify-content-start">
-            <p c>userRole: {{ userRole }}</p>
+            <p c>gender: {{ this.currentUserInfo.gender }}</p>
+          </div>
+        </div>
+        <div class="row testBorder">
+          <div class="col-6 mt-1">
+            <p c>age: {{ this.currentUserInfo.userAge }}</p>
+          </div>
+          <div class="col-6 mt-2 d-flex justify-content-start">
+            <p c>userRole: {{ this.currentUserInfo.userRole }}</p>
           </div>
         </div>
         <div class="centerBtn">
@@ -102,10 +100,10 @@ export default {
       userLanguage: "English",
       userID: 1234,
       cellphone: 1234567891,
-      gender: "female",
+      gender: "thingy",
       age: 25,
       userRole: "client",
-      currentUserInfo: null,
+      currentUserInfo: [],
       currentUserID: null,
     };
   },
