@@ -70,6 +70,7 @@ export default createStore({
         let singleUser = await axios.get(`${baseUrl}/users/${userID}`)
         console.log("Below is what the getSingleUser axios returns")
         console.log(singleUser.data)
+        return singleUser.data
       } catch(error){
         console.log(`The following error occured in the axios.get of the getSingleUser fx: ${error}`)
       }

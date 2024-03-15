@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1>fetching user info from the localStorage begins here</h1>
+    <button @click="getCurrentUserDeets()">Get currentUserInfo</button>
     <h1 class="ms-3">Welcome, {{ firstName }} {{ lastName }}</h1>
     <br />
     <div class="row d-flex justify-content-center">
@@ -49,46 +51,48 @@
           </div>
         </div>
         <div class="centerBtn">
-            <button>Edit details</button>
+          <button>Edit details</button>
         </div>
       </div>
     </div>
-    <br><br>
+    <br /><br />
     <h3 class="ms-3 mainBrwnTxt">Below are your booking(s)</h3>
     <div class="table-responsive">
-        <table class="ms-3 table">
-            <thead>
-                <tr>
-                    <td>Day</td>
-                    <td class="d-flex mx-2">Date</td>
-                    <td>Language</td>
-                    <td class="d-flex mx-2">Time</td>
-                    <td>Service</td>
-                    <td class="d-flex mx-5">Action</td>
-                </tr>
-            </thead>
-            <tbody>
-            <tr v-for="booking in this.$store.state.theBookingsArray" :key="booking.userID">
-              <td>{{ booking.userID }}</td>
-              <td class="d-flex mx-2">Need to get date</td>
-              <td>{{ booking.userLanguage }}</td>
-              <td class="d-flex mx-2">{{ booking.userTime }}</td>
-              <td>{{ booking.userService }}</td>
-              <td class="d-flex mx-2">
-                <EditBookingsModal :booking="booking" class="mx-3"/>
-                <button @click="deleteBooking(booking.userID)">Delete</button>
-    
+      <table class="ms-3 table">
+        <thead>
+          <tr>
+            <td>Day</td>
+            <td class="d-flex mx-2">Date</td>
+            <td>Language</td>
+            <td class="d-flex mx-2">Time</td>
+            <td>Service</td>
+            <td class="d-flex mx-5">Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="booking in this.$store.state.theBookingsArray"
+            :key="booking.userID"
+          >
+            <td>{{ booking.userID }}</td>
+            <td class="d-flex mx-2">Need to get date</td>
+            <td>{{ booking.userLanguage }}</td>
+            <td class="d-flex mx-2">{{ booking.userTime }}</td>
+            <td>{{ booking.userService }}</td>
+            <td class="d-flex mx-2">
+              <EditBookingsModal :booking="booking" class="mx-3" />
+              <button @click="deleteBooking(booking.userID)">Delete</button>
             </td>
-            </tr>
-          </tbody>
-        </table>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <br><br>
+    <br /><br />
   </div>
 </template>
 
 <script>
-import EditBookingsModal from '@/components/EditBookingsModal.vue'
+import EditBookingsModal from "@/components/EditBookingsModal.vue";
 
 export default {
   data() {
@@ -100,36 +104,68 @@ export default {
       cellphone: 1234567891,
       gender: "female",
       age: 25,
-      userRole: "client"
+      userRole: "client",
+      currentUserInfo: null,
+      currentUserID: null,
     };
-  }, components: {
-    EditBookingsModal
+  },
+  components: {
+    EditBookingsModal,
   },
   methods: {
-    async deleteBooking (userID) {
+    async deleteBooking(userID) {
       try {
-        await this.$store.dispatch('deleteBooking', userID);
+        await this.$store.dispatch("deleteBooking", userID);
         location.reload();
         location.reload();
-      } catch (error){console.log(`The following error occured while trying to dispatch the delete booking fx: ${error}`)}
+      } catch (error) {
+        console.log(
+          `The following error occured while trying to dispatch the delete booking fx: ${error}`
+        );
+      }
+    },
+    async getCurrentUserDeets() {
+      try {
+        console.log(
+          "the fx to get the current userInf fr local storage is running in the userProfile now"
+        );
+        this.currentUserInfo = JSON.parse(
+          localStorage.getItem("currentUserInfo")
+        );
+        let theUserID = this.currentUserInfo.userID;
+        console.log(`This is the userID fr localStorage: ${theUserID}`);
+        this.currentUserID = this.currentUserInfo.userID;
+        console.log("Below is the this.currentUserId variable after being set");
+        console.log(this.currentUserID);
+        console.log("Now I'm starting the getAUser fx from the store");
+        let fullUserDeets = await this.$store.dispatch(
+          "getAUser",
+          this.currentUserID
+        );
+        console.log("Below is the fullUserDeets variable");
+        console.log(fullUserDeets);
+      } catch (error) {
+        console.log(
+          `The following error occured while trying to get the individual user info from the local storage on the mounted of the userProfile: ${error}`
+        );
+      }
+    },
+  },
+  mounted() {
+    try {
+      this.$store.dispatch("getBookings");
+    } catch (error) {
+      console.log(
+        `The following error was found while trying to dispatch the getBookings action`
+      );
     }
   },
-  mounted(){
-    try {
-      this.$store.dispatch("getBookings")
-    } catch (error)
-    {
-      console.log(`The following error was found while trying to dispatch the getBookings action`)
-    }
-  }
 };
 </script>
 
 <style>
-
-
-.centerBtn{
-    margin-inline: 40%;
-    width: 100px;
+.centerBtn {
+  margin-inline: 40%;
+  width: 100px;
 }
 </style>

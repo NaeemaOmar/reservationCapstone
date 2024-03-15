@@ -3,7 +3,7 @@
 ">
             <br>
             <div class="testBorder mx-3">
-                <p class="mainBrwnTxt txtAlignCenter">Disclaimer: this is a dha eBooking clone made as part of a capstone project</p>
+                <p class="mainBrwnTxt txtAlignCenter">Disclaimer: this is a dha eBooking site created as part of a capstone project</p>
                 <!-- <br><br> -->
                 <!-- <br> doesn't work in the presence of the d-flex but works otherwise-->
                 <p class="mainBrwnTxt txtAlignCenter">& copy NaeemaOmar 2024</p>
