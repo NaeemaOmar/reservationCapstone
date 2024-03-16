@@ -35,7 +35,7 @@
               <a class="nav-link" href="/contact">Contact us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/userprofile" v-if="!adminUser"
+              <a class="nav-link" href="/userprofile" v-if="!adminUser && loginStatus"
                 >User Profile</a
               >
             </li>

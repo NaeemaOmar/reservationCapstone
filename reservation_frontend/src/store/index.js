@@ -89,6 +89,14 @@ export default createStore({
         console.log(`The following error occured while trying to run the axios.delete in the store: ${error}`)
       }
     },
+    async editTheUser(context, user){
+      try{
+        console.log("The axios.patch for the users is running now")
+        await axios.patch(`${baseUrl}/users/${user.userID}`)
+      } catch(error){
+        console.log(`The following error occured while tryin to run the editUser axios in the store: ${error}`)
+      }
+    },
     // BOOKINGS ACTIONS START HERE
     async getBookings({commit}){
       try{

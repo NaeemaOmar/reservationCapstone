@@ -8,7 +8,7 @@
 
 <!-- Modal -->
 <div class="modal fade" :id="'staticBackdrop'+dayNumber" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'staticBackdropLabel'+dayNumber" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content veryWhitenedBrownBg">
       <div class="modal-header">
         <h5 class="modal-title" :id="'staticBackdropLabel'+dayNumber">You have chosen to come in on: {{ dayName }}, {{ dayNumber }} April 2024</h5>

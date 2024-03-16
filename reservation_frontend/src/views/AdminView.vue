@@ -47,7 +47,7 @@
                     <td>{{user.gender}}</td>
                     <td>{{user.userRole}}</td>
                     <td>
-                        <button>edit</button>
+                        <EditUser/>
                         <button @click="deleteTheUser(user.userID)">delete</button>
                     </td>
                 </tr>
@@ -60,7 +60,12 @@
 </template>
 
 <script>
+import EditUser from '@/components/EditUserModal.vue'
+
 export default {
+    components: {
+        EditUser
+    },
   data() {
     return {
         currentUserInfo:[]
