@@ -92,7 +92,7 @@ export default createStore({
     async editTheUser(context, user){
       try{
         console.log("The axios.patch for the users is running now")
-        await axios.patch(`${baseUrl}/users/${user.userID}`)
+        await axios.patch(`${baseUrl}/users/${user.userID}`, user)
       } catch(error){
         console.log(`The following error occured while tryin to run the editUser axios in the store: ${error}`)
       }

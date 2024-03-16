@@ -88,6 +88,7 @@ export default {
         );
         localStorage.clear();
         history.go(-1);
+        location.reload();
       } catch (error) {
         console.log(
           `The following error occured while trying to use the log-out btn in the navBar: ${error}`

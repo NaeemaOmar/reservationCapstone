@@ -33,9 +33,9 @@
           </div>
           <div class="modal-body">
             <h5>You may edit the following details of the user:</h5>
-            <p>Firstname:{{ user.firstName }}</p>
+            <p>First name:{{ user.firstName }}</p>
             <input type="text" placeholder="Enter the new firstname" v-model="user.firstName">
-            <p>Lastname:</p>
+            <p>Last name:</p>
             <input type="text" placeholder="Enter the new lastname" v-model="user.lastName">
             <!-- <p>Gender:</p>
             <input type="text" placeholder="Enter the new gender" v-model="user.gender">
@@ -52,7 +52,7 @@
             >
               Close
             </button>
-            <button type="button">Edit details</button>
+            <button type="button" @click="editUser(this.user)">Edit details</button>
           </div>
         </div>
       </div>
@@ -62,27 +62,31 @@
 
 <script>
 export default {
-    // name: EditUser,
-    // props:{
-    //     user: Object
-    // }
+    name: 'EditUser',
+    props:{
+        user: Object
+    },
     data (){
         return{
             user:{
-                firstName:"checkFirstName",
-                lastName: "checkLastName",
+                userID:1,
+                firstName:null,
+                lastName: null,
                 // gender: "checkGender",
                 // userRole: "checkUserRole",
                 // userLanguage: "checkLanguage"
             }
-            // user:{
-            //     firstName:null,
-            //     lastName: null,
-            //     gender: null,
-            //     userRole: null,
-            //     userLanguage: null
-            // }
         }
+    },
+    methods:{
+       async editUser (user){
+        try{
+            console.log("The editUser fx is running in the editUser modal")
+            this.$store.dispatch('editTheUser', this.user)
+        } catch(error){
+            console.log(`The following error occured while trying to run the editUser fx in the editUser modal: ${error}`)
+        }
+       }
     }
 }
 </script>
