@@ -47,7 +47,7 @@
                     <td>{{user.gender}}</td>
                     <td>{{user.userRole}}</td>
                     <td>
-                        <EditUser/>
+                        <EditUser :user="user"/>
                         <button @click="deleteTheUser(user.userID)">delete</button>
                     </td>
                 </tr>
@@ -68,7 +68,8 @@ export default {
     },
   data() {
     return {
-        currentUserInfo:[]
+        currentUserInfo:[],
+        allUsers: []
     };
   },
   methods:{
@@ -80,11 +81,20 @@ export default {
       } catch(error){
         console.log(`The following error occured in the delete user method of the Admin pg: ${error}`)
       }
-    }
+    }, 
+    // async allUsers(){
+    //     try{
+    //         console.log("the allUsers fx in the methods of the admin pg will now run")
+    //         this.allUsers = this.$store.dispatch('getTheUsers')
+    //     } catch(error){
+    //         console.log(`The following error occured while trying to define the allUsers fx in the methods of the admin pg: ${error}`)
+    //     }
+    // }
   },
   mounted (){
     try {
-        this.$store.dispatch('getTheUsers')
+        this.allUsers = this.$store.dispatch('getTheUsers')
+        // this.allUsers()
     } 
     catch(error)
     {
