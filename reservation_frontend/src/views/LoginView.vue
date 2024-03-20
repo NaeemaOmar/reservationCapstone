@@ -53,7 +53,7 @@
             <button class="my-3" @click="registerNewUser()">Register</button>
           </div>
         </div>
-        <div class="col-12 col-sm-5 mx-1 mainBrwnBg">
+        <div class="col-12 col-sm-5 mx-1 mainBrwnBg d-flex">
           <div class="mainWhitishBg innerDiv">
             <h5 class="text-start mx-2">
               To login, enter your username (ID number) and password.

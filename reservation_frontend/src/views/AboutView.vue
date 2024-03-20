@@ -1,5 +1,6 @@
 <template>
-  <div class="about mx-3">
+  <div class="mx-3">
+    <br>
     <h1>About Home Affairs eBooking services</h1>
     <h3 class="mainBrwnTxt">Easy to use, convenient and just a click away</h3>
     <h5>

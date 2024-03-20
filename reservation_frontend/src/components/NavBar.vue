@@ -5,9 +5,8 @@
     </div>
     <div class="d-flex justify-content-evenly">
       <nav class="navbar navbar-expand-lg navBg">
-        <!-- <div class="container-fluid"> -->
         <button
-          class="navbar-toggler"
+          class="navbar-toggler brownBorder"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarTogglerDemo02"
@@ -15,32 +14,32 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon spanBorder"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/">Home</a>
+              <a class="nav-link brownColor" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link brownColor" href="/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/bookings">Bookings</a>
+              <a class="nav-link brownColor" href="/bookings">Bookings</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login" v-if="!loginStatus">Login</a>
+              <a class="nav-link brownColor" href="/login" v-if="!loginStatus">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact us</a>
+              <a class="nav-link brownColor" href="/contact">Contact us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/userprofile" v-if="!adminUser && loginStatus"
+              <a class="nav-link brownColor" href="/userprofile" v-if="!adminUser && loginStatus"
                 >User Profile</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin" v-if="adminUser">Admin</a>
+              <a class="nav-link brownColor" href="/admin" v-if="adminUser">Admin</a>
             </li>
             <li class="nav-item">
               <a class="nav-link">
@@ -126,11 +125,38 @@ export default {
 
 <style scoped>
 .navBg {
-  background-color: aqua;
+  background-color: #000000;
 }
 
 .dhaBanner {
   width: 75%;
   margin-inline: 100px;
 }
+
+.brownColor{
+  color: #c36406;
+}
+
+.brownBorder{
+  border-color: #c36406;
+  border-width: 5px;
+  border-radius: 50px;
+  background-color: #c36406;
+}
+
+.spanBorder{
+  border-color: aqua;
+  border-width: 5px;
+  border-radius: 10px;
+}
+
+.brownBG{
+  background-color: #c36406;
+}
+
+.blackColor{
+  color: #000000;
+}
+
 </style>
+

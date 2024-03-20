@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="mx-3">
+    <br>
     <h1>Welcome to eHomeAffairs - eBooking</h1>
     <h3 class="mainBrwnTxt">Services</h3>
     <div class="row d-flex justify-content-evenly">
@@ -22,6 +23,9 @@
       </form>
     </div>
     <br />
+    <h3 class="mainBrwnTxt mt-3">date-input for calendar</h3>
+    <input type="date" class="calendarSize">
+    <br>
     <h3 class="mainBrwnTxt mt-3">v-for version of Slots</h3>
     <div class="veryWhitenedBrownBg slotsDiv mx-auto">
       <div>
@@ -177,5 +181,11 @@ th {
 
 .slotWidth{
   width: 500px;
+}
+
+.calendarSize{
+  width: 300px;
+  border: dotted;
+  border-color: black;
 }
 </style>

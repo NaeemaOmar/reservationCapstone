@@ -3,15 +3,15 @@
     <h1>Welcome to eHomeAffairs - eBooking</h1>
     <h3 class="mainBrwnTxt">Easy to use, convenient and just a click away</h3>
     <div class="row">
-      <div class="col-6 queueImgDiv">
+      <div class="col-6 queueImgDiv mx-auto my-auto mt-3">
         <img
           class="darkGreyBg roundedBorder mx-3"
           src="https://i.ibb.co/7J9bjzx/queue-Icon.png"
           alt=""
         />
       </div>
-      <div class="col-6 testerBorder">
-        <h5 class="txtStart">
+      <div class="col-6 testerBorder mx-auto mt-3">
+        <h5>
           The Department of Home Affairs is proud to announce its latest
           collaboration with technology: solving the unbearably long queues by
           setting up its online booking system. This system allows clients of
@@ -53,5 +53,9 @@
 
 .queueImgDiv {
   width: fit-content;
+}
+
+.txtCenter{
+  text-align: center;
 }
 </style>
