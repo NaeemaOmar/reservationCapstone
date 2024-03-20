@@ -11,7 +11,7 @@ import jwt from 'jsonwebtoken'
 
 let getSlots = async ()=>{
     let [slotsArray] = await pool.query(`
-    SELECT * FROM available_slots_April
+    SELECT * FROM available_slots
     `)
     // console.log(SlotsArray)
     return slotsArray
@@ -20,22 +20,22 @@ let getSlots = async ()=>{
 
 let getASlot = async (id)=>{
     let [slot] = await pool.query(`
-    SELECT * from available_slots_April WHERE slotID = ?
+    SELECT * from available_slots WHERE slotID = ?
     `, [id])
     return slot
 }
-// console.log(await getASlot(8));
+// console.log(await getASlot(4));
 
-let addASlot = async (slotID, slotDay, slotDate) =>{
+let addASlot = async (slotID, slotDay, slotMonth) =>{
     let insertSlot = await pool.query(`
-    INSERT INTO available_slots_April (slotID, slotDay, slotDate) VALUES (?, ?, ?)
-    `, [slotID, slotDay, slotDate]) 
+    INSERT INTO available_slots (slotID, slotDay, slotMonth) VALUES (?, ?, ?)
+    `, [slotID, slotDay, slotMonth]) 
     let [newSlot] = await pool.query(`
-    SELECT * FROM available_slots_April WHERE slotID = ?
+    SELECT * FROM available_slots WHERE slotID = ?
     `, [slotID])
     return newSlot
 }
-// console.log(await addASlot("10", "wednesday", "20240410"))
+// console.log(await addASlot("11", "9", "4"))
 
 // NOTE: 
 //      1) This fx needs the Slot name to be unique else it will return
@@ -45,16 +45,16 @@ let addASlot = async (slotID, slotDay, slotDate) =>{
 // PROBLEM: This fx is not dynamic and requires ALL values to be present. This is necessary since the website will look untidy/uneven if there are some elements missing.
 
 
-let editSlot = async (slotID, slotDay, slotDate) => {
+let editSlot = async (slotID, slotDay, slotMonth) => {
     if(slotDay){
         let editSlotDay = await pool.query(`
-        UPDATE available_slots_April SET slotDay = ? WHERE slotID = ?
+        UPDATE available_slots SET slotDay = ? WHERE slotID = ?
         `, [slotDay, slotID])
     }
-    if(slotDate){
-        let editSlotDate = await pool.query(`
-        UPDATE available_slots_April SET slotDate = ? WHERE slotID = ?
-        `, [slotDate, slotID])
+    if(slotMonth){
+        let editSlotMonth = await pool.query(`
+        UPDATE available_slots SET slotMonth = ? WHERE slotID = ?
+        `, [slotMonth, slotID])
     } else {
         console.log("There are no slot details to update")
     }
@@ -66,7 +66,7 @@ let editSlot = async (slotID, slotDay, slotDate) => {
 }
 
 // Test 1: does the 'true' condition work
-// console.log(await editSlot(9, "Friday", 20240302))
+// console.log(await editSlot(9, "77", 22))
 
 // Test 2: does the 'false' condition work
 // console.log(await editSlot(10, null, null))
@@ -83,7 +83,7 @@ let editSlot = async (slotID, slotDay, slotDate) => {
 let deleteSlot = async (id) => {
     let deletedSlot = await getASlot(id)
     let deleteTheSlot = await pool.query(`
-    DELETE FROM available_slots_April WHERE slotID = ?
+    DELETE FROM available_slots WHERE slotID = ?
     `, [id])
     return deletedSlot
 }
