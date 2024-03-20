@@ -48,6 +48,13 @@ const routes = [
     component: function () {
       return import('../views/AdminView.vue')
     }
+  },
+  {
+    path: '/datefx',
+    name: 'datefx',
+    component: function () {
+      return import('../views/DateFxsBooking.vue')
+    }
   }
 ]
 
