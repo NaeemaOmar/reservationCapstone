@@ -17,9 +17,9 @@ export default {
         res.send(await getSlots())
     },
     editASlot: async (req, res) => {
-        let SlotID = req.params.id
-        let {slotName} = req.body
-        let theEditedSlot = await editSlot(SlotID, slotName)
+        let slotID = req.params.id
+        let {slotDay, slotMonth} = req.body
+        let theEditedSlot = await editSlot(slotID, slotDay, slotMonth)
         res.send(theEditedSlot)
     },
     deleteASlot: async (req, res) => {

@@ -50,11 +50,13 @@ let editSlot = async (slotID, slotDay, slotMonth) => {
         let editSlotDay = await pool.query(`
         UPDATE available_slots SET slotDay = ? WHERE slotID = ?
         `, [slotDay, slotID])
+        console.log(`The new slotDay = ${slotDay}`)
     }
     if(slotMonth){
         let editSlotMonth = await pool.query(`
         UPDATE available_slots SET slotMonth = ? WHERE slotID = ?
         `, [slotMonth, slotID])
+        console.log(`The new slotDay = ${slotMonth}`)
     } else {
         console.log("There are no slot details to update")
     }
