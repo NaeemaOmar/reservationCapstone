@@ -216,7 +216,7 @@
       </tr>
     </table>
     <h3>Add a new slot using the button below:</h3>
-    <AddSlot :randNum="2"/>
+    <AddSlot :randNum="newNum"/>
 
   </div>
 </template>
@@ -234,6 +234,7 @@ export default {
   },
   data() {
     return {
+      newNum:5000,
       aSlotID: null,
       newDeets: {
         slotID: null,
@@ -286,9 +287,10 @@ export default {
     },
     async deleteTheUser(userID) {
       try {
+        console.log("The deleteUser fx of the admin pg is now running. Below is the userID to be deleted:")
+        console.log(userID)
         this.$store.dispatch("deleteAUser", userID);
-        location.reload();
-        location.reload();
+        location.reload()
       } catch (error) {
         console.log(
           `The following error occured in the delete user method of the Admin pg: ${error}`

@@ -82,6 +82,8 @@ export default createStore({
     },
     async deleteAUser(context, userID){
       try{
+        console.log("the deleteUser axios.delete is running now. Below is the userID that will be deleted:")
+        console.log(userID)
         let deletedUser = await axios.delete(`${baseUrl}/users/${userID}`)
         console.log("The delete user axios is running now. Below is the user to be deleted")
         console.log(deletedUser)
@@ -92,6 +94,8 @@ export default createStore({
     async editTheUser(context, user){
       try{
         console.log("The axios.patch for the users is running now")
+        console.log("Below is the userId that will be edited:")
+        console.log(user.userID)
         await axios.patch(`${baseUrl}/users/${user.userID}`, user)
       } catch(error){
         console.log(`The following error occured while tryin to run the editUser axios in the store: ${error}`)
@@ -159,6 +163,15 @@ export default createStore({
         await axios.delete(`${baseUrl}/slots/${slotID}`, slotID)
       } catch(error){
         console.log(`The following error occured while trying to delete a slot in the axios.delete (ie, the store): ${error}`)
+      }
+    },
+    async addASlot(context, newSlotInfo){
+      try{
+        console.log("The axios.post of the addSlots is running now. Below is the newSlotInfo variable that will be sent to the backend:")
+        console.log(newSlotInfo)
+        await axios.post(`${baseUrl}/slots`, newSlotInfo)
+      } catch(error){
+        console.log(`The following error occured in the axios.post of the slots: ${error}`)
       }
     }
   },
