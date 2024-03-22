@@ -117,6 +117,7 @@ export default {
           "This is the admin pg. Below is the returned variable of the axios.patch for the slots"
         );
         console.log(theEditedSlot);
+        location.reload()
       } catch (error) {
         console.log(
           `The following error occured while trying to run the editSlot fx in the admin pg via the editSlotModal component: ${error}`

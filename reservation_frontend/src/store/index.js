@@ -150,6 +150,16 @@ export default createStore({
       } catch(error){
         console.log(`The following error occured while trying to edit a slot in the axios.patch (ie, the store): ${error}`)
       }
+    },
+    async deleteASlot(context, slotID){
+      try{
+        console.log("The axios.delete for the slots is running now")
+        console.log("Below is the value of the slotID variable that the slot's axios.delete takes in")
+        console.log(slotID)
+        await axios.delete(`${baseUrl}/slots/${slotID}`, slotID)
+      } catch(error){
+        console.log(`The following error occured while trying to delete a slot in the axios.delete (ie, the store): ${error}`)
+      }
     }
   },
   modules: {
