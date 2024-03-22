@@ -80,7 +80,6 @@
                   Submit
                 </button>
               </div>
-              <p class="mt-3">{{ submitMessage }}</p>
             </form>
             <br /><br />
           </div>
