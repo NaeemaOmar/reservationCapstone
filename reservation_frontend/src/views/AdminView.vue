@@ -188,23 +188,88 @@
       </div>
       <!-- ADD USER MODAL ENDS HERE -->
     </div>
-    <h3 class="ms-3 mainBrwnTxt">Below are the booking(s) per user</h3>
+    <!-- <h3 class="ms-3 mainBrwnTxt">Below are the booking(s) per user</h3> -->
     <h3 class="ms-3 mainBrwnTxt">
-      Below are the slots available for booking. NOTE: this table does not exist
-      yet
+      Below are the slots available for booking:
     </h3>
+    <p>this the the slotsArray fr the data(){} fx: <br>{{this.theSlotsArray}}</p>
+    <table>
+        <tr>
+          <td>slotID</td>
+          <td>slotDay</td>
+          <td>slotMonth</td>
+          <td>Action</td>
+        </tr>
+        <tr v-for="oneSlot in this.theSlotsArray" :key="oneSlot.slotID">
+        <td>{{ oneSlot.slotID }}</td>
+        <td>{{ oneSlot.slotDay }}</td>
+        <td>{{ oneSlot.slotMonth }}</td>
+        <td>
+          <div class="d-flex justify-content-evenly">
+            <EditSlot :oneSlot="oneSlot"/>
+            <!-- editSlot modal starts here -->
+            <!-- Button trigger modal -->
+<!-- <button type="button" class="" data-bs-toggle="modal" :data-bs-target="'#staticBackdropLabel'+oneSlot.slotID"> 
+  edit
+</button> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" :id="'staticBackdropLabel'+oneSlot.slotID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'staticBackdropLabel'+oneSlot.slotID" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" :id="'staticBackdropLabel'+oneSlot.slotID">This edit is for the following slot: slotID = {{ oneSlot.slotID }}, slotDay = {{ oneSlot.slotDay }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p> {{ this.newDeets.slotID = oneSlot.slotID }}</p>
+        <h5>You can edit the following details: {{ this.newDeets.slotID }}</h5>
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <p>slotDay</p>
+            <input type="number" placeholder="Enter the new day number" v-model="newDeets.slotDay">
+          </div>
+          <div class="col-12 col-sm-6">
+            <p>slotMonth</p>
+            <input type="number" placeholder="Enter the new month number" v-model="newDeets.slotMonth">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="" @click="editTheSlot(this.newDeets)">Edit slot</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+            <!-- editSlot modal ends here -->
+            <button>delete</button>
+          </div>
+        </td>
+        </tr>
+      </table>
+      <h3>Add a new slot using the button below:</h3>
+      <button>Add new slot</button>
   </div>
 </template>
 
 <script>
 import EditUser from "@/components/EditUserModal.vue";
+import EditSlot from "@/components/EditSlotModal.vue";
 
 export default {
   components: {
     EditUser,
+    EditSlot
   },
   data() {
     return {
+      newDeets:{
+        slotID:null,
+        slotDay: null,
+        slotMonth: null
+      },
+      theSlotsArray: [],
       currentUserInfo: [],
       allUsers: [],
       newUserInfo: {
@@ -218,6 +283,21 @@ export default {
     };
   },
   methods: {
+
+    async getAllSlots() {
+      try {
+        let allTheSlots = await this.$store.dispatch("getSlots");
+        console.log(
+          "below is the slots array returned fr the getSlots axios in the dateFxs pg"
+        );
+        console.log(allTheSlots);
+        this.theSlotsArray = allTheSlots;
+      } catch (error) {
+        console.log(
+          `The following error occured on the mounted of the DateFxsBooking view when trying to get the slots: ${error}`
+        );
+      }
+    },
     async registerNewUser() {
       try {
         console.log("the register user method in the login page is running");
@@ -249,6 +329,11 @@ export default {
     // }
   },
   mounted() {
+    try{
+      this.getAllSlots();
+    } catch(error){
+      console.log(`The following error occured in the mounted of the admin pg when trying to run the getSlots fx: ${error}`)
+    }
     try {
       this.allUsers = this.$store.dispatch("getTheUsers");
       // this.allUsers()

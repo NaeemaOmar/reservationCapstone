@@ -2,16 +2,16 @@
     <div>
                 <!-- MODAL STARTS HERE -->
         <!-- Button trigger modal -->
-<button type="button" class="btn singleSlot" data-bs-toggle="modal" :data-bs-target="'#staticBackdrop'+dayNumber">
-  {{dayNumber}}
+<button @click="findDayName()" type="button" class="singleSlot" data-bs-toggle="modal" :data-bs-target="'#staticBackdrop'+theSlot.slotDay">
+  {{theSlot.slotDay}}
 </button>
 
 <!-- Modal -->
-<div class="modal fade" :id="'staticBackdrop'+dayNumber" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'staticBackdropLabel'+dayNumber" aria-hidden="true">
+<div class="modal fade" :id="'staticBackdrop'+theSlot.slotDay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'staticBackdropLabel'+theSlot.slotDay" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content veryWhitenedBrownBg">
       <div class="modal-header">
-        <h5 class="modal-title" :id="'staticBackdropLabel'+dayNumber">You have chosen to come in on: {{ dayName }}, {{ dayNumber }} April 2024</h5>
+        <h5 class="modal-title" :id="'staticBackdropLabel'+theSlot.slotDay">You have chosen to come in on: {{ (this.dayName) }}, {{ theSlot.slotDay }} {{ this.monthName }} 2024</h5>
         <button type="button" class="btn-close mt-5" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -36,6 +36,7 @@
         </div>
       </div>
       <div class="modal-footer">
+        <!-- <button @click="findDayName"> getFullDay</button> -->
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn" @click="addABooking">Create booking</button>
       </div>
@@ -50,11 +51,35 @@
 export default {
     name: 'BookingsModal',
     props: {
-    dayNumber: Number,
-    dayName: String
+      theSlot: Object
   },
   data (){
     return{
+      dayName:'',
+      monthName:'',
+      weekDays: [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      monthNames: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
       newBooking: {
         userID: null,
         userLanguage: null,
@@ -63,6 +88,25 @@ export default {
       }
     }},
   methods:{
+    async findDayName(){
+      let fullDate = new Date(`2024, '${this.theSlot.slotMonth}, ${this.theSlot.slotDay}'`)
+      console.log("below is the full date")
+      console.log(fullDate)
+      let dayNum = fullDate.getDay()
+      console.log("below is the day")
+      console.log(this.weekDays[dayNum])
+      this.dayName = this.weekDays[dayNum]
+      console.log("below is the this.dayName variable")
+      console.log(this.dayName)
+      let monthNum = fullDate.getMonth()
+      console.log("Below is the monthNum")
+      console.log(monthNum)
+      let monthName = this.monthNames[monthNum]
+      console.log("Below is the monthName")
+      console.log(monthName)
+      this.monthName = monthName
+
+    },
     async addABooking(){
       let newBooking = this.newBooking
       // the line of code above allows me to use the newBooking variable w/out the need for the this. keyword
@@ -107,7 +151,7 @@ export default {
     border-radius: 15px;
     border-color: #F0D8C1;
     background-color: #F2EBD9;
-    margin-left: 53px;
+    /* margin-left: 53px; */
     margin-top: 20px;
 }
 </style>

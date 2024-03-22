@@ -134,8 +134,21 @@ export default createStore({
         let allTheProducts = await axios.get(`${baseUrl}/slots`);
         console.log(allTheProducts.data)
         commit('getAllProducts', allTheProducts.data)
+        return allTheProducts.data
       } catch(error){
         console.log(`the following error was found while trying to fetch the slots in the store: ${error}`)
+      }
+    },
+    async editASlot(context, newDeets){
+      try{
+        console.log("The axios.patch for the slots is running now")
+        console.log("Below is the value of the newDeets variable that the slot's axios.patch takes in")
+        console.log(newDeets)
+        let editedSlot = await axios.patch(`${baseUrl}/slots/${newDeets.slotID}`, newDeets)
+        console.log("below is what the axios.patch for the slots returned:")
+        console.log(editedSlot.data)
+      } catch(error){
+        console.log(`The following error occured while trying to edit a slot in the axios.patch (ie, the store): ${error}`)
       }
     }
   },
