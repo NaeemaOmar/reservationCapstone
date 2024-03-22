@@ -234,7 +234,8 @@ export default {
           JSON.stringify(checkTheuser.worked)
         );
         await this.setCurrentUserInfo();
-        history.go(-1);
+        window.location.href = "/";
+        // history.go(-1)
       } catch (error) {
         console.log(
           `the following error was found while trying to check user credentials in the login pg: ${error}`

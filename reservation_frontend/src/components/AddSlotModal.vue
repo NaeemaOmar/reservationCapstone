@@ -1,9 +1,11 @@
 <template>
   <div>
     <!-- Button trigger modal -->
-<button type="button" class="" data-bs-toggle="modal" :data-bs-target="'#staticBackdropLabel' + randNum">
-  Add new slot
-</button>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="" data-bs-toggle="modal" :data-bs-target="'#staticBackdropLabel' + randNum">
+        Add new slot
+      </button>
+    </div>
 
 <!-- Modal -->
 <div class="modal fade" :id="'staticBackdropLabel' + randNum" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'staticBackdropLabel' + randNum" aria-hidden="true">

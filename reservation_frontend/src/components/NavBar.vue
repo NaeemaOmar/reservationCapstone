@@ -45,7 +45,7 @@
               <a class="nav-link brownColor" href="/datefx">DateFxBooking</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a class="nav-link" href="/">
                 <button @click="logOut()">Log out</button>
               </a>
             </li>
@@ -89,8 +89,8 @@ export default {
           "Part 2 of the logout fx (clearing/resetting the local storage) is running now"
         );
         localStorage.clear();
-        history.go(-1);
-        location.reload();
+        // history.go(-1);
+        // location.reload();
       } catch (error) {
         console.log(
           `The following error occured while trying to use the log-out btn in the navBar: ${error}`

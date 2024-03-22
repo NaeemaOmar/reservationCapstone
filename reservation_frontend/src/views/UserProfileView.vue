@@ -49,8 +49,8 @@
           </div>
         </div>
         <div class="centerBtn">
-          <button>Edit details</button>
-          <button @click="deleteTheUser(this.currentUserInfo.userID)">Delete user</button>
+          <EditSingleUser class="mt-3" :userID="this.currentUserInfo.userID"/>
+          <!-- <button @click="deleteTheUser(this.currentUserInfo.userID)">Delete user</button> -->
         </div>
       </div>
     </div>
@@ -93,6 +93,7 @@
 
 <script>
 import EditBookingsModal from "@/components/EditBookingsModal.vue";
+import EditSingleUser from "@/components/EditSingleUserModal.vue";
 
 export default {
   data() {
@@ -103,6 +104,7 @@ export default {
   },
   components: {
     EditBookingsModal,
+    EditSingleUser
   },
   methods: {
     async deleteBooking(userID) {

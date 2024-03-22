@@ -96,6 +96,8 @@ export default createStore({
         console.log("The axios.patch for the users is running now")
         console.log("Below is the userId that will be edited:")
         console.log(user.userID)
+        console.log("Below is the userDetails to be edited:")
+        console.log(user)
         await axios.patch(`${baseUrl}/users/${user.userID}`, user)
       } catch(error){
         console.log(`The following error occured while tryin to run the editUser axios in the store: ${error}`)

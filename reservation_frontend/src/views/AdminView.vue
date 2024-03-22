@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1 class="ms-3">
+  <div class="mx-3">
+    <h1 class="">
       Welcome, {{ this.currentUserInfo.firstName }}
       {{ this.currentUserInfo.lastName }}
     </h1>
@@ -33,10 +33,10 @@
             <p>Gender:{{ this.currentUserInfo.gender }}</p>
           </div>
         </div>
-        <button centerBtn>Edit details</button>
+        <EditSingleUser class="mt-3" :userID="this.currentUserInfo.userID"/>
       </div>
     </div>
-    <h3 class="ms-3 mainBrwnTxt">Below are the users</h3>
+    <h3 class=" mainBrwnTxt">Below are the users</h3>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -67,18 +67,20 @@
       </table>
     </div>
     <div>
-      <h3>Add a new user using the button below</h3>
+      <!-- <h3>Add a new user using the button below</h3> -->
       <!-- ADD USER MODAL STARTS HERE -->
 
       <!-- Button trigger modal -->
-      <button
-        type="button"
-        class="centerBtn"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
-      >
-        Add new user
-      </button>
+      <div class="d-flex justify-content-center">
+        <button
+          type="button"
+          class=""
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Add new user
+        </button>
+      </div>
 
       <!-- Modal -->
       <div
@@ -193,9 +195,9 @@
       </div>
       <!-- ADD USER MODAL ENDS HERE -->
     </div>
-    <!-- <h3 class="ms-3 mainBrwnTxt">Below are the booking(s) per user</h3> -->
-    <h3 class="ms-3 mainBrwnTxt">Below are the slots available for booking:</h3>
-    <table>
+    <!-- <h3 class=" mainBrwnTxt">Below are the booking(s) per user</h3> -->
+    <h3 class=" mainBrwnTxt">Below are the slots available for booking:</h3>
+    <table class="mx-auto">
       <tr>
         <td>slotID</td>
         <td>slotDay</td>
@@ -215,20 +217,22 @@
         </td>
       </tr>
     </table>
-    <h3>Add a new slot using the button below:</h3>
-    <AddSlot :randNum="newNum"/>
+    <!-- <h3>Add a new slot using the button below:</h3> -->
+    <AddSlot class="mt-3" :randNum="newNum"/>
 
   </div>
 </template>
 
 <script>
 import EditUser from "@/components/EditUserModal.vue";
+import EditSingleUser from "@/components/EditSingleUserModal.vue";
 import EditSlot from "@/components/EditSlotModal.vue";
 import AddSlot from "@/components/AddSlotModal.vue";
 
 export default {
   components: {
     EditUser,
+    EditSingleUser,
     EditSlot,
     AddSlot
   },
@@ -337,10 +341,6 @@ export default {
 </script>
 
 <style>
-.centerBtn {
-  margin-inline: 40%;
-  width: 100px;
-}
 
 .mainBrownBg_modal {
   background: #c36406;
