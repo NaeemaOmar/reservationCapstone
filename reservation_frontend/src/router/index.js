@@ -15,13 +15,6 @@ const routes = [
     }
   },
   {
-    path: '/bookings',
-    name: 'bookings',
-    component: function () {
-      return import('../views/BookingsView.vue')
-    }
-  },
-  {
     path: '/login',
     name: 'login',
     component: function () {
@@ -50,10 +43,10 @@ const routes = [
     }
   },
   {
-    path: '/datefx',
-    name: 'datefx',
+    path: '/bookings',
+    name: 'bookings',
     component: function () {
-      return import('../views/DateFxsBooking.vue')
+      return import('../views/Bookings.vue')
     }
   }
 ]

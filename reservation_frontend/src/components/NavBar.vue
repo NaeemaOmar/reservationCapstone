@@ -42,7 +42,7 @@
               <a class="nav-link brownColor" href="/admin" v-if="adminUser">Admin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link brownColor" href="/datefx">DateFxBooking</a>
+              <a class="nav-link brownColor" href="/datefx">Bookings</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/">
