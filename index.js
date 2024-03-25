@@ -17,7 +17,7 @@ const app = express()
 
 const corsOptions = {
     // Put in the firebase address here so Godwin can access it
-    origin: "https://capstone-f71a3.web.app/",
+    origin: "https://capstone-f71a3.web.app",
     credentials:true,
     // Please work, amen
     optionsSuccessStatus:200
