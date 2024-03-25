@@ -5,10 +5,31 @@
             <div class="mx-3">
                 <!-- <br><br> -->
                 <!-- <br> doesn't work in the presence of the d-flex but works otherwise-->
-                <p class="mainBrwnTxt txtAlignCenter">& copy NaeemaOmar 2024</p>
+                <p class="mainBrwnTxt txtAlignCenter">&copy NaeemaOmar {{currentYear}}</p>
             </div>
     </div>
 </template>
+
+<script>
+export default {
+    data(){return{
+        currentYear:null
+    }},
+    methods:{
+
+    },
+    mounted(){
+        try{
+            let currentDate = new Date()
+            let theYear = currentDate.getFullYear()
+            console.log(`The current year is: ${theYear}`)
+            this.currentYear = theYear
+        } catch(error){
+            console.log(`The following error occured while trying to get the current year in the mounted of the footer: ${error}`)
+        }
+    }
+}
+</script>
 
 <style>
 .footerHeight{
@@ -27,9 +48,5 @@
     margin-inline: 0px;
 }
 
-.testBorder{
-    border: dotted;
-    border-color: aqua;
-}
 
 </style>

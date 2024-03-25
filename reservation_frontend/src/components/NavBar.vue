@@ -2,6 +2,8 @@
   <div>
     <div class="d-flex justify-content-center">
       <img class="dhaBanner" src="https://i.ibb.co/0QbW3FS/DHA-banner.png" />
+    </div>
+    <div class="blackBg">
       <p class="mainBrwnTxt txtAlignCenter">Disclaimer: this is a dha eBooking site created as part of a capstone project</p>
     </div>
     <div class="d-flex justify-content-evenly">
