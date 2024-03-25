@@ -54,6 +54,13 @@ nav a {
   color: #EBCBAC;
 }
 
+button:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 0 10px 5px #C36406;  
+  transform: scale(1.5);
+
+}
+
 /* CUSTOM STYLING STARTS HERE */
 .bgGradient{
   height: 100%;
