@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mx-3">
     <!-- Final product starts here -->
     <!-- Logic: i have a slots table that has all the available weekdays. This table has the year, monthNum and dayNum in separate columns. The slotsDiv loops through this table and runs a fx that takes the 3 variables, runs the new Date(yyyy, mm, dd) method followed by the .getDay() method to get the day. Thereafter, this info is stored in an appropriate variable in the data(){return{}} fx of the <script></script> tags. The dayNum of the table is returned as the button name. NOTE: when editing a booking DATE, there needs to be a fx that deletes the existing one. This means that my edit btn should be a DELETE/INSERT INTO combo instead of an UPDATE. (nvm, an UPDATE works just as well.). Dunno if i'll need a sortBy fx for the array we're returning from the workbench in the event that the new row messes up the order  -->
 

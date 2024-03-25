@@ -33,7 +33,7 @@ export default {
 
 <style>
 .footerHeight{
-    height: 100px;
+    height: 60px;
     /* 130px height at 700px screen */
     /* 150px height at 700px screen */
 

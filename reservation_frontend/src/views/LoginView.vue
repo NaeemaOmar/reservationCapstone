@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div class="mx-3">
     <h1>Welcome to eHomeAffairs - eBooking</h1>
     <h3 class="mainBrwnTxt">Easy to use, convenient and just a click away</h3>
-    <h4>login status = {{ loginStatus }}</h4>
     <div class="slightlyWhitenedBrownBg mx-3">
       <div class="row d-flex justify-content-evenly">
         <div class="col-12 col-sm-5 mx-1 mainBrwnBg">
@@ -97,8 +96,8 @@
         </div>
       </div>
     </div>
-    <h2>View token assignment for users here</h2>
-    <table>
+    <!-- <h2>View token assignment for users here</h2> -->
+    <!-- <table>
       <thead>
         <tr>
           <td>userID</td>
@@ -111,9 +110,9 @@
           <td>{{ user.token }}</td>
         </tr>
       </tbody>
-    </table>
-    <h2>View basic info for existing users here</h2>
-    <table>
+    </table> -->
+    <!-- <h2>View basic info for existing users here</h2> -->
+    <!-- <table>
       <thead>
         <tr>
           <td>userID</td>
@@ -132,7 +131,7 @@
           <td>{{ user.hashedPassword }}</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
   </div>
 </template>
 

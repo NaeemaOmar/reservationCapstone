@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mx-3">
     <h1>Welcome to eHomeAffairs - eBooking</h1>
     <h3 class="mainBrwnTxt">Easy to use, convenient and just a click away</h3>
     <div class="slightlyWhitenedBrownBg mx-3">
@@ -105,7 +105,7 @@
               <span class="mainBrwnTxt">Please note:</span> no Home Affairs
               employee will work online or outside of our offices.
             </h5>
-            <div class="row">
+            <div class="row mx-2">
               <div class="col-3">
                 <a
                   href="https://za.linkedin.com/company/department-of-home-affairs"
@@ -212,5 +212,9 @@ h3 {
   color: #c36406;
   box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
   border-color: #343a40;
+}
+
+.iconStyling:hover {
+  color: #EBCBAC;
 }
 </style>

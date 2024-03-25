@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mx-3">
     <h1>Welcome to eHomeAffairs - eBooking</h1>
     <h3 class="mainBrwnTxt">Easy to use, convenient and just a click away</h3>
     <div class="row">

@@ -2,12 +2,12 @@
   <div>
     <div class="bgGradient">
         <Navbar/>
+        <p class="mainBrwnTxt txtAlignCenter blackBg mx-auto">Disclaimer: this is a dha eBooking site created as part of a capstone project</p>
       <div class="viewDiv mx-auto">
         <router-view/>
         <Footer/>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -46,8 +46,12 @@ nav a {
   /* border: dotted; */
 }
 
-nav div.ul.li.a.router-link-exact-active {
-  color: #ffffff;
+.nav-link:hover {
+  color: #EBCBAC;
+}
+
+.navbar-nav .nav-item .nav-link.router-link-exact-active {
+  color: #EBCBAC;
 }
 
 /* CUSTOM STYLING STARTS HERE */

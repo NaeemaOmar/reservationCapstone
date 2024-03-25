@@ -3,9 +3,9 @@
     <div class="d-flex justify-content-center">
       <img class="dhaBanner" src="https://i.ibb.co/0QbW3FS/DHA-banner.png" />
     </div>
-    <div class="blackBg">
+    <!-- <div class="blackBg dhaBanner d-flex justify-content-center">
       <p class="mainBrwnTxt txtAlignCenter">Disclaimer: this is a dha eBooking site created as part of a capstone project</p>
-    </div>
+    </div> -->
     <div class="d-flex justify-content-evenly">
       <nav class="navbar navbar-expand-lg navBg">
         <button
