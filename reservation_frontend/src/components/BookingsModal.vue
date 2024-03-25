@@ -51,12 +51,15 @@
                   <div class="col-6">
                     <p class="mt-3">Language</p>
                     <!-- <input type="text" v-model="newBooking.userLanguage"> -->
-                    <select id="options" name="options">
-                      <option value="" disabled selected>Select the service you need:</option>
-                      <option value="ID">ID</option>
-                      <option value="BirthCertificate">Birth Certificate</option>
-                      <option value="VISA">VISA</option>
-                      <option value="Passport">Passport</option>
+                    <select id="options" name="options" v-model="newBooking.userLanguage">
+                      <option value="" disabled selected>
+                        Select your language:
+                      </option>
+                      <option value="Eng">English</option>
+                      <option value="Afr">
+                        Afrikaans
+                      </option>
+                      <option value="Xho">isiXhosa</option>
                     </select>
                   </div>
                 </div>
@@ -66,11 +69,20 @@
                   type="time"
                   min="08:00"
                   max="16:00"
-                  step="3600"
+                  step="900"
                   v-model="newBooking.userTime"
                 />
                 <p class="mt-3">Choose the Service</p>
-                <input type="text" v-model="newBooking.userService" />
+                <!-- <input type="text" v-model="newBooking.userService" /> -->
+                <select id="options" name="options" v-model="newBooking.userService" >
+                  <option value="" disabled selected>
+                    Select the service you need:
+                  </option>
+                  <option value="ID">ID</option>
+                  <option value="BirthCertificate">Birth Certificate</option>
+                  <option value="VISA">VISA</option>
+                  <option value="Passport">Passport</option>
+                </select>
               </div>
             </div>
           </div>
