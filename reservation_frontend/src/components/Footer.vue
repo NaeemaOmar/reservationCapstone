@@ -2,8 +2,7 @@
     <div class="blackBg footerHeight
 ">
             <br>
-            <div class="testBorder mx-3">
-                <p class="mainBrwnTxt txtAlignCenter">Disclaimer: this is a dha eBooking site created as part of a capstone project</p>
+            <div class="mx-3">
                 <!-- <br><br> -->
                 <!-- <br> doesn't work in the presence of the d-flex but works otherwise-->
                 <p class="mainBrwnTxt txtAlignCenter">& copy NaeemaOmar 2024</p>

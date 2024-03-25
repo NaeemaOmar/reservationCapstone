@@ -43,10 +43,10 @@ nav {
 nav a {
   font-weight: bold;
   /* color: #C36406; */
-  border: dotted;
+  /* border: dotted; */
 }
 
-nav a.router-link-exact-active {
+nav div.ul.li.a.router-link-exact-active {
   color: #ffffff;
 }
 

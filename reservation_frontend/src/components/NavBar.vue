@@ -2,6 +2,7 @@
   <div>
     <div class="d-flex justify-content-center">
       <img class="dhaBanner" src="https://i.ibb.co/0QbW3FS/DHA-banner.png" />
+      <p class="mainBrwnTxt txtAlignCenter">Disclaimer: this is a dha eBooking site created as part of a capstone project</p>
     </div>
     <div class="d-flex justify-content-evenly">
       <nav class="navbar navbar-expand-lg navBg">
@@ -19,31 +20,31 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link brownColor" aria-current="page" href="/">Home</a>
+              <a class="nav-link brownColor" id="navHover" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link brownColor" href="/about">About</a>
+              <a class="nav-link brownColor" id="navHover" href="/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link brownColor" href="/bookings">Bookings</a>
+              <a class="nav-link brownColor" id="navHover" href="/bookings">Bookings</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link brownColor" href="/login" v-if="!loginStatus">Login</a>
+              <a class="nav-link brownColor" id="navHover" href="/login" v-if="!loginStatus">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link brownColor" href="/contact">Contact us</a>
+              <a class="nav-link brownColor" id="navHover" href="/contact">Contact us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link brownColor" href="/userprofile" v-if="!adminUser && loginStatus"
+              <a class="nav-link brownColor" id="navHover" href="/userprofile" v-if="!adminUser && loginStatus"
                 >User Profile</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link brownColor" href="/admin" v-if="adminUser">Admin</a>
+              <a class="nav-link brownColor" id="navHover" href="/admin" v-if="adminUser">Admin</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/">
-                <button @click="logOut()">Log out</button>
+                <button id="navHover" @click="logOut()">Log out</button>
               </a>
             </li>
           </ul>
@@ -137,7 +138,9 @@ export default {
   color: #c36406;
 }
 
-
+#navHover :hover{
+  color: #f2ebd9;
+}
 
 .brownBG{
   background-color: #c36406;
