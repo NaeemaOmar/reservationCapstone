@@ -140,18 +140,7 @@ export default {
   color: #c36406;
 }
 
-.brownBorder{
-  border-color: #c36406;
-  border-width: 5px;
-  border-radius: 50px;
-  background-color: #c36406;
-}
 
-.spanBorder{
-  border-color: aqua;
-  border-width: 5px;
-  border-radius: 10px;
-}
 
 .brownBG{
   background-color: #c36406;

@@ -7,11 +7,12 @@
     <div>
         <h1>Welcome to eHomeAffairs - eBooking</h1>
         <h3 class="mainBrwnTxt">Below are the slots available for booking</h3>
+        <p>Click any of the slots below and enter the details to create your booking</p>
       <div class="row">
         <!-- <div class="col-12 col-sm-6 col-md-3"></div> -->
         <!-- Above is the original column breakPoints -->
         <div
-          class="col-4 col-md-2 testBorder d-flex justify-content-evenly mx-sm-auto"
+          class="col-4 col-md-2 d-flex justify-content-evenly mx-sm-auto mb-5"
           v-for="aSlot in this.theSlotsArray"
           :key="aSlot.slotID"
         >

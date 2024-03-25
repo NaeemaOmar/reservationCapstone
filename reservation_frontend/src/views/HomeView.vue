@@ -10,7 +10,7 @@
           alt=""
         />
       </div>
-      <div class="col-6 testerBorder mx-auto mt-3">
+      <div class="col-6 mx-auto mt-3">
         <h5>
           The Department of Home Affairs is proud to announce its latest
           collaboration with technology: solving the unbearably long queues by
