@@ -2,8 +2,8 @@
   <div>
     <div class="bgGradient">
         <Navbar/>
-        <p class="mainBrwnTxt txtAlignCenter blackBg mx-auto">Disclaimer: this is a dha eBooking site created as part of a capstone project</p>
       <div class="viewDiv mx-auto">
+        <p class="mainBrwnTxt txtAlignCenter blackBg mx-auto">Disclaimer: this is a dha eBooking site created as part of a capstone project</p>
         <router-view/>
         <Footer/>
       </div>

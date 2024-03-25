@@ -215,6 +215,6 @@ h3 {
 }
 
 .iconStyling:hover {
-  color: #EBCBAC;
+  transform: scale(1.5);
 }
 </style>
