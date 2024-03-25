@@ -55,9 +55,9 @@ nav a {
 }
 
 button:hover {
-  background-color: #f0f0f0;
+  background-color: #C36406;
   box-shadow: 0 0 10px 5px #C36406;  
-  transform: scale(1.5);
+  transform: scale(1.2);
 
 }
 
